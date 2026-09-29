@@ -24,4 +24,15 @@ class ProjectController extends Controller
         
         return view('projects.index', compact('projects', 'categories'));
     }
+
+    public function show($slug)
+    {
+        $project = Project::with(['category', 'images'])->where('slug', $slug)->firstOrFail();
+        $relatedProjects = Project::where('category_id', $project->category_id)
+                                  ->where('id', '!=', $project->id)
+                                  ->take(3)
+                                  ->get();
+                                  
+        return view('projects.show', compact('project', 'relatedProjects'));
+    }
 }
