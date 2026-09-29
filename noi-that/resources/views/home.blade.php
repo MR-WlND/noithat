@@ -141,6 +141,11 @@
                 </div>
             </div>
             <div class="contact-form-panel">
+                @if(session('success'))
+                    <div class="alert alert-success" style="background-color: #d4edda; color: #155724; padding: 15px; border-radius: 4px; margin-bottom: 20px;">
+                        <i class="fas fa-check-circle"></i> {{ session('success') }}
+                    </div>
+                @endif
                 <form action="/lien-he" method="POST" class="form">
                     @csrf
                     <div class="form-group">
