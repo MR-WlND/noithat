@@ -15,5 +15,15 @@ Route::post('/lien-he', [ContactController::class, 'store'])->name('contact.stor
 Route::prefix('admin')->group(function () {
     Route::get('/login', [\App\Http\Controllers\Admin\AuthController::class, 'showLoginForm'])->name('admin.login');
     Route::post('/login', [\App\Http\Controllers\Admin\AuthController::class, 'login'])->name('admin.login.submit');
-    Route::post('/logout', [\App\Http\Controllers\Admin\AuthController::class, 'logout'])->name('admin.logout');
+    
+    // Protected admin routes
+    Route::middleware('auth')->group(function () {
+        Route::post('/logout', [\App\Http\Controllers\Admin\AuthController::class, 'logout'])->name('admin.logout');
+        
+        Route::get('/', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('admin.dashboard');
+        
+        // Placeholder routes for navigation links
+        Route::get('/projects', function() { return 'Projects'; })->name('admin.projects.index');
+        Route::get('/inquiries', function() { return 'Inquiries'; })->name('admin.inquiries.index');
+    });
 });
