@@ -290,7 +290,7 @@
                         </div>
                         <div class="input-wrapper">
                             <i class="far fa-user icon-left"></i>
-                            <input type="email" class="form-control" name="email" value="{{ old('email', 'admin@mrwind.interior.vn') }}" required autofocus placeholder="admin@mrwind.interior.vn">
+                            <input type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus placeholder="admin@mrwind.interior.vn">
                         </div>
                     </div>
                     
