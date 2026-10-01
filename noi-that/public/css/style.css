@@ -349,6 +349,10 @@ textarea { resize:vertical; min-height:88px; }
    Tablet  max-width 1024px
 --------------------------------------------------- */
 @media (max-width:1024px) {
+    /* Header - show hamburger early to prevent overlap */
+    .nav, .header-right { display:none !important; }
+    .hamburger { display:flex !important; }
+    
     .hero__wrap { grid-template-columns:1fr; min-height:auto; }
     .hero__left { padding:72px 5% 40px; }
     .hero__h1 { font-size:2.5rem; }
@@ -372,8 +376,8 @@ textarea { resize:vertical; min-height:88px; }
 @media (max-width:768px) {
 
     /* Header */
-    .nav, .nav-list, .header-right { display:none; }
-    .hamburger { display:flex; }
+    .nav, .header-right { display:none !important; }
+    .hamburger { display:flex !important; }
     .header-container { height:60px; }
     .logo-text { font-size:1.05rem; }
     .logo-icon { width:32px; height:32px; font-size:0.9rem; }
