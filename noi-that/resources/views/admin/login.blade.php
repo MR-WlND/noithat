@@ -363,6 +363,7 @@
             </div>
         </div>
     </div>
+</div>
 
     <div class="bottom-bar">
         <div>&copy; 2025 MR.WIND Interior <span class="dot">&bull;</span> Kiến trúc &amp; Sản xuất Nội thất Gỗ tự nhiên <span class="dot">&bull;</span> Thạch Thất, Hà Nội.</div>
