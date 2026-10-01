@@ -34,8 +34,26 @@
                 <a href="tel:0988248868" class="header-phone"><i class="fas fa-phone-alt"></i> 0988.248.868</a>
                 <a href="#lien-he" class="btn btn--primary">Nhận Báo Giá <i class="fas fa-arrow-right"></i></a>
             </div>
+            <!-- Hamburger -->
+            <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
         </div>
     </header>
+
+    <!-- Mobile Nav -->
+    <nav class="mobile-nav" id="mobileNav">
+        <ul>
+            <li><a href="{{ route('home') }}">Trang Chủ</a></li>
+            <li><a href="#ve-chung-toi">Về Chúng Tôi</a></li>
+            <li><a href="#hang-muc">Hạng Mục Thi Công</a></li>
+            <li><a href="/du-an">Dự Án</a></li>
+            <li><a href="#quy-trinh">Báo Giá</a></li>
+        </ul>
+        <div class="mobile-nav__cta">
+            <a href="tel:0988248868" class="btn btn--primary btn--full"><i class="fas fa-phone-alt"></i> Gọi Ngay: 0988.248.868</a>
+        </div>
+    </nav>
 
     <!-- Main Content -->
     <main>
@@ -103,5 +121,20 @@
             <i class="fas fa-phone"></i>
         </a>
     </div>
+    <script>
+    var btn = document.getElementById("hamburgerBtn");
+    var nav = document.getElementById("mobileNav");
+    if (btn && nav) {
+        btn.addEventListener("click", function() {
+            nav.classList.toggle("open");
+        });
+        // Close when clicking a link inside mobile nav
+        nav.querySelectorAll("a").forEach(function(link) {
+            link.addEventListener("click", function() {
+                nav.classList.remove("open");
+            });
+        });
+    }
+    </script>
 </body>
 </html>

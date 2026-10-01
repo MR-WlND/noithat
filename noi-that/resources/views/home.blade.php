@@ -98,7 +98,7 @@
 <section class="spaces" id="hang-muc">
     <div class="container">
         <div class="spaces__top">
-            <p class="tag">Hạng Mục Thi Công</p>
+            <p class="tag">DI / Danh Mục Thiết Kế &amp; Thi Công</p>
             <h2>Không Gian Trọng Điểm Tại Xưởng</h2>
         </div>
         <div class="spaces__grid">
@@ -107,21 +107,20 @@
             <div class="space-card space-card--big">
                 <div class="space-card__img">
                     <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=700&auto=format&fit=crop" alt="Tủ Bếp">
-                    <span class="space-card__chip">Tủ Bếp</span>
+                    <span class="space-card__chip">Chuyên Sâu Bếp</span>
                 </div>
                 <div class="space-card__body">
                     <div class="space-card__row">
-                        <h3>Hệ Tủ Bếp Gỗ Sồi Nam Lưu Chống Ẩm</h3>
-                        <span class="space-card__price">Từ 4.5tr/md</span>
+                        <h3>Hệ Tủ Bếp Gỗ Sồi Nam Lam Chống Ẩm</h3>
+                        <span class="space-card__price-badge">Bếp Đảo &amp; Khởi Rời</span>
                     </div>
-                    <p>Thiết kế hiện đại kết hợp công năng tối ưu. Đa dạng mẫu mã từ chữ L, I đến bàn đảo sang trọng.</p>
+                    <p>Tối ưu hóa công năng tùng giác bếp (bồn rửa – bếp nấu – tủ lạnh), bề mặt xử lý kháng nước bề mặt Melamine / Veneer sồi tự nhiên kết hợp đa bàn bếp thạch anh vân máy.</p>
                     <div class="space-card__foot">
                         <div class="space-card__tags">
-                            <span>Chữ L</span>
-                            <span>Chữ I</span>
-                            <span>Bàn Đảo</span>
+                            <span>MDF Lõi Xanh</span>
+                            <span>Ray âm giảm chấn</span>
                         </div>
-                        <a href="#lien-he" class="space-card__link">Xem chi tiết <i class="fas fa-arrow-right"></i></a>
+                        <a href="#lien-he" class="space-card__link">Tư vấn kiểu bếp <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -131,22 +130,24 @@
                 <div class="space-card space-card--sm">
                     <div class="space-card__img">
                         <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&auto=format&fit=crop" alt="Tủ Áo">
-                        <span class="space-card__chip">Tủ Áo</span>
+                        <span class="space-card__chip">Tủ Quần Áo</span>
                     </div>
                     <div class="space-card__body">
                         <h3>Tủ Áo Cánh Kính &amp; Walk-in Closet</h3>
-                        <p>Kết hợp đèn LED cảm biến, gương tích hợp và ngăn kéo thông minh Blum cao cấp.</p>
+                        <p>Cánh kính khung nhôm Anodize siêu mỏng, ray trượt êm ái tích hợp hệ đèn LED cảm biến vây lay bao cao.</p>
+                        <p class="space-card__meta">Module may do kích thước phòng</p>
                         <a href="#lien-he" class="space-card__link">Tư vấn thiết kế <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
                 <div class="space-card space-card--sm">
                     <div class="space-card__img">
                         <img src="https://images.unsplash.com/photo-1616137148650-4aa14051b78d?w=500&auto=format&fit=crop" alt="Nội thất căn hộ">
-                        <span class="space-card__chip">Căn Hộ</span>
+                        <span class="space-card__chip">Trọn Gói Căn Hộ</span>
                     </div>
                     <div class="space-card__body">
-                        <h3>Nội Thất Căn Hộ Trọn Gói Tối Giản</h3>
-                        <p>Phong cách Japandi &amp; Wabi-Sabi hiện đại. Giao hàng &amp; lắp ráp tận nơi trong 7–14 ngày.</p>
+                        <h3>Thi Công Căn Hộ &amp; Biệt Thự</h3>
+                        <p>Gói dịch vụ hoàn thiện từ bản vẽ concept, thi công trần – tường – sàn đến toàn bộ đồ gỗ nội thất chìa khóa trao tay.</p>
+                        <p class="space-card__meta">Bàn giao chính xác 30 ngày</p>
                         <a href="#lien-he" class="space-card__link">Tư vấn thiết kế <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
