@@ -27,7 +27,8 @@
             font-family: var(--font-sans); 
             background-color: #f1efe9;
             color: var(--text-dark); 
-            min-height: 100vh; 
+            height: 100vh;
+            overflow: hidden;
             display: flex; 
             flex-direction: column;
         }
@@ -38,12 +39,12 @@
             margin: 0 auto;
             display: flex;
             flex-direction: column;
-            min-height: 100vh;
-            padding: 20px;
+            height: 100vh;
+            padding: 10px 20px;
         }
 
         .top-bar {
-            padding: 30px 0 20px 0;
+            padding: 15px 0 10px 0;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -52,6 +53,7 @@
             color: #8a7b6a;
             text-transform: uppercase;
             letter-spacing: 1px;
+            flex-shrink: 0;
         }
         .top-bar .lang-switch span { cursor: pointer; transition: color 0.2s; }
         .top-bar .lang-switch span.active { color: var(--brown); }
@@ -64,16 +66,19 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            min-height: 0; /* Important for flex child to not overflow */
+            padding: 10px 0;
         }
         
         .bottom-bar {
-            padding: 20px 0 30px 0;
+            padding: 10px 0 15px 0;
             display: flex;
             justify-content: space-between;
             align-items: center;
             font-size: 0.7rem;
             color: #7d7265;
             font-weight: 500;
+            flex-shrink: 0;
         }
         .bottom-bar .dot { margin: 0 6px; color: #d0c8be; font-size: 0.6rem; }
         
@@ -85,7 +90,8 @@
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 25px 60px rgba(0,0,0,0.06);
-            height: 680px; /* Fixed height for exact match */
+            height: 100%;
+            max-height: 680px;
         }
         
         /* Left Panel */
@@ -98,6 +104,7 @@
             justify-content: space-between;
             padding: 40px;
             color: white;
+            overflow-y: auto;
         }
         .left-panel::before {
             content: "";
@@ -138,6 +145,7 @@
             position: relative;
             padding: 40px;
             background: white;
+            overflow-y: auto;
         }
         
         .login-box {
@@ -240,10 +248,12 @@
         .alert ul { margin: 0; padding-left: 20px; }
 
         @media (max-width: 992px) {
+            body { height: auto; overflow: visible; }
+            .container { height: auto; }
             .left-panel { display: none; }
             .right-panel { width: 100%; padding: 40px; }
             .admin-portal-badge { display: none; }
-            .login-card { min-height: auto; }
+            .login-card { min-height: auto; max-height: none; height: auto; }
         }
         @media (max-width: 576px) {
             .right-panel { padding: 25px 20px; }
