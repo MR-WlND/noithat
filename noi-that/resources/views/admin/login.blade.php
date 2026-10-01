@@ -202,17 +202,6 @@
         }
         .btn-submit:hover { background: var(--brown-dark); }
         
-        .system-status {
-            display: flex; justify-content: space-between; align-items: center;
-            background: var(--bg-light); border-radius: 6px; padding: 12px 16px;
-            margin-top: 25px; font-size: 0.8rem; font-weight: 500; color: var(--text-muted);
-            flex-wrap: wrap; gap: 8px;
-        }
-        .status-dot { display: inline-block; width: 8px; height: 8px; background: var(--brown); border-radius: 50%; margin-right: 8px; }
-        
-        .support-info { display: flex; justify-content: space-between; margin-top: 20px; font-size: 0.8rem; color: var(--text-muted); flex-wrap: wrap; gap: 8px; }
-        .support-info a { color: var(--brown); font-weight: 600; text-decoration: none; }
-        
         /* Alert */
         .alert { background: #fee2e2; color: #b91c1c; padding: 12px 16px; border-radius: 6px; margin-bottom: 24px; font-size: 0.9rem; }
         .alert ul { margin: 0; padding-left: 20px; }
@@ -331,16 +320,6 @@
                         Đăng Nhập Quản Trị <i class="fas fa-arrow-right"></i>
                     </button>
                 </form>
-                
-                <div class="system-status">
-                    <div><span class="status-dot"></span> Trạng thái xưởng Chàng Sơn:</div>
-                    <div><i class="fas fa-tools" style="color:var(--brown);"></i> Đang sản xuất (8 chuyền CNC)</div>
-                </div>
-                
-                <div class="support-info">
-                    <span>Hỗ trợ kỹ thuật nội bộ:</span>
-                    <a href="tel:0988248868"><i class="fas fa-phone-alt"></i> 0988.248.868</a>
-                </div>
             </div>
         </div>
     </div>
