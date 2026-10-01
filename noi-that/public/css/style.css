@@ -508,7 +508,7 @@ textarea { resize:vertical; min-height:88px; }
     .footer-col .logo-text { color:var(--text); }
     .footer-socials { justify-content:center; margin-top:12px; }
     .footer-socials a { color:var(--brown); border-color:rgba(155,107,58,0.2); }
-    .footer-bottom { border-top:1px solid rgba(0,0,0,0.06); padding:16px 0; color:var(--muted); }
+    .footer-bottom { display:none; }
 
     /* Bottom Nav & Floating btns */
     .floating-buttons { display:none; }
