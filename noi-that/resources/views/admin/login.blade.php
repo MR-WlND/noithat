@@ -22,40 +22,73 @@
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
-        /* Body acts as the backdrop */
+        /* Layout */
         body { 
             font-family: var(--font-sans); 
-            background-color: #e9e5e1; /* Slightly darker background to make the card pop */
+            background-color: #f1efe9;
             color: var(--text-dark); 
             min-height: 100vh; 
             display: flex; 
-            align-items: center; 
-            justify-content: center;
-            padding: 20px;
+            flex-direction: column;
         }
+        
+        .top-bar {
+            padding: 35px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #8a7b6a;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .top-bar .lang-switch span { cursor: pointer; transition: color 0.2s; }
+        .top-bar .lang-switch span.active { color: var(--brown); }
+        .top-bar .lang-switch span:hover { color: var(--brown); }
+        .top-bar .lang-switch .dot { margin: 0 10px; color: #d0c8be; font-size: 0.7rem; }
+        .top-bar .security-badge .dot { margin: 0 10px; color: #d0c8be; font-size: 0.7rem; }
+        
+        .main-wrapper {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 50px;
+        }
+        
+        .bottom-bar {
+            padding: 30px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.7rem;
+            color: #7d7265;
+            font-weight: 500;
+        }
+        .bottom-bar .dot { margin: 0 6px; color: #d0c8be; font-size: 0.6rem; }
         
         /* Centered Card Layout */
         .login-card { 
             display: flex; 
             width: 100%; 
-            max-width: 1200px; /* Responsive max width */
+            max-width: 1080px; 
             background: white;
-            border-radius: 12px;
+            border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.08);
-            /* Make height responsive but have a minimum */
-            min-height: min(90vh, 760px);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.06);
+            height: 680px; /* Fixed height for exact match */
         }
         
         /* Left Panel */
         .left-panel {
-            width: 42%;
+            width: 45%;
             background: url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80") center/cover no-repeat;
             position: relative;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            padding: 4vw; /* Responsive padding */
+            padding: 40px;
             color: white;
         }
         .left-panel::before {
@@ -79,23 +112,23 @@
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 12px;
-            padding: 3vw; /* Responsive padding */
+            padding: 30px;
             margin-top: 40px;
         }
-        .glass-card h4 { font-family: var(--font-serif); font-size: clamp(1.4rem, 2vw, 1.8rem); margin-bottom: 25px; display:flex; align-items:center; justify-content:center; gap:10px; font-weight:700; }
-        .glass-quote { font-size: clamp(1rem, 1.5vw, 1.15rem); font-family: var(--font-serif); font-style: italic; line-height: 1.6; margin-bottom: 15px; }
-        .glass-desc { font-size: clamp(0.85rem, 1vw, 0.9rem); line-height: 1.6; opacity: 0.9; }
+        .glass-card h4 { font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 25px; display:flex; align-items:center; justify-content:center; gap:10px; font-weight:700; }
+        .glass-quote { font-size: 1.05rem; font-family: var(--font-serif); font-style: italic; line-height: 1.6; margin-bottom: 15px; }
+        .glass-desc { font-size: 0.85rem; line-height: 1.6; opacity: 0.9; }
         
         .left-footer { display: flex; justify-content: space-between; font-size: 0.75rem; font-weight: 600; letter-spacing: 1px; color: rgba(255,255,255,0.7); text-transform: uppercase; }
         
         /* Right Panel */
         .right-panel {
-            width: 58%;
+            width: 55%;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
-            padding: 4vw; /* Responsive padding */
+            padding: 40px;
             background: white;
         }
         
@@ -118,7 +151,7 @@
         }
         
         .brand-tag { font-size: 0.8rem; font-weight: 700; color: var(--brown); letter-spacing: 1px; margin-bottom: 16px; display: block; text-transform: uppercase; }
-        .login-box h1 { font-family: var(--font-serif); font-size: clamp(2rem, 3vw, 2.4rem); color: var(--text-dark); margin-bottom: 12px; font-weight: 700; }
+        .login-box h1 { font-family: var(--font-serif); font-size: 2.2rem; color: var(--text-dark); margin-bottom: 12px; font-weight: 700; }
         .login-box > p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 30px; }
         
         /* Role Banner */
@@ -211,7 +244,17 @@
     </style>
 </head>
 <body>
-    <div class="login-card">
+    <div class="top-bar">
+        <div class="lang-switch">
+            <span class="active">VI</span> <span class="dot">&bull;</span> <span>EN</span> <span class="dot">&bull;</span> <span>JP</span>
+        </div>
+        <div class="security-badge">
+            <i class="fas fa-shield-alt" style="color:var(--brown); margin-right:8px;"></i> INTERNAL ACCESS ONLY <span class="dot">&bull;</span> ISO 27001
+        </div>
+    </div>
+    
+    <div class="main-wrapper">
+        <div class="login-card">
         <!-- Left Panel -->
         <div class="left-panel">
             <div class="left-content">
@@ -320,7 +363,11 @@
             </div>
         </div>
     </div>
-    
+
+    <div class="bottom-bar">
+        <div>&copy; 2025 MR.WIND Interior <span class="dot">&bull;</span> Kiến trúc &amp; Sản xuất Nội thất Gỗ tự nhiên <span class="dot">&bull;</span> Thạch Thất, Hà Nội.</div>
+        <div>Phiên bản v2.5.4 (Enterprise) <span class="dot">&bull;</span> it@mrwind.interior.vn</div>
+    </div>
     <script>
         function togglePassword() {
             var input = document.getElementById('password');
