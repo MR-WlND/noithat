@@ -32,8 +32,18 @@
             flex-direction: column;
         }
         
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
         .top-bar {
-            padding: 35px 50px;
+            padding: 30px 0 20px 0;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -54,11 +64,10 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px 50px;
         }
         
         .bottom-bar {
-            padding: 30px 50px;
+            padding: 20px 0 30px 0;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -72,7 +81,6 @@
         .login-card { 
             display: flex; 
             width: 100%; 
-            max-width: 1080px; 
             background: white;
             border-radius: 8px;
             overflow: hidden;
@@ -244,6 +252,7 @@
     </style>
 </head>
 <body>
+<div class="container">
     <div class="top-bar">
         <div class="lang-switch">
             <span class="active">VI</span> <span class="dot">&bull;</span> <span>EN</span> <span class="dot">&bull;</span> <span>JP</span>
@@ -369,6 +378,7 @@
         <div>&copy; 2025 MR.WIND Interior <span class="dot">&bull;</span> Kiến trúc &amp; Sản xuất Nội thất Gỗ tự nhiên <span class="dot">&bull;</span> Thạch Thất, Hà Nội.</div>
         <div>Phiên bản v2.5.4 (Enterprise) <span class="dot">&bull;</span> it@mrwind.interior.vn</div>
     </div>
+</div>
     <script>
         function togglePassword() {
             var input = document.getElementById('password');
