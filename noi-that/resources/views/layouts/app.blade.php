@@ -121,6 +121,29 @@
             <i class="fas fa-phone"></i>
         </a>
     </div>
+    <!-- Bottom Nav for Mobile -->
+    <nav class="bottom-nav">
+        <a href="{{ route('home') }}" class="active">
+            <i class="fas fa-home"></i>
+            <span>Trang chủ</span>
+        </a>
+        <a href="/du-an">
+            <i class="fas fa-images"></i>
+            <span>Dự án</span>
+        </a>
+        <a href="#quy-trinh">
+            <i class="fas fa-file-invoice-dollar"></i>
+            <span>Báo giá</span>
+        </a>
+        <a href="tel:0988248868" style="color:#ef4444;">
+            <i class="fas fa-phone-alt"></i>
+            <span>Gọi ngay</span>
+        </a>
+        <a href="https://zalo.me/0988248868" target="_blank" style="color:#0068ff;">
+            <i class="fas fa-comment-dots"></i>
+            <span>Zalo</span>
+        </a>
+    </nav>
     <script>
     var btn = document.getElementById("hamburgerBtn");
     var nav = document.getElementById("mobileNav");
