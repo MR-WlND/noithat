@@ -42,24 +42,6 @@
             height: 100vh;
             padding: 10px 20px;
         }
-
-        .top-bar {
-            padding: 15px 0 10px 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.8rem;
-            font-weight: 700;
-            color: #8a7b6a;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            flex-shrink: 0;
-        }
-        .top-bar .lang-switch span { cursor: pointer; transition: color 0.2s; }
-        .top-bar .lang-switch span.active { color: var(--brown); }
-        .top-bar .lang-switch span:hover { color: var(--brown); }
-        .top-bar .lang-switch .dot { margin: 0 10px; color: #d0c8be; font-size: 0.7rem; }
-        .top-bar .security-badge .dot { margin: 0 10px; color: #d0c8be; font-size: 0.7rem; }
         
         .main-wrapper {
             flex: 1;
@@ -251,14 +233,6 @@
 </head>
 <body>
 <div class="container">
-    <div class="top-bar">
-        <div class="lang-switch">
-            <span class="active">VI</span> <span class="dot">&bull;</span> <span>EN</span> <span class="dot">&bull;</span> <span>JP</span>
-        </div>
-        <div class="security-badge">
-            <i class="fas fa-shield-alt" style="color:var(--brown); margin-right:8px;"></i> INTERNAL ACCESS ONLY <span class="dot">&bull;</span> ISO 27001
-        </div>
-    </div>
     
     <div class="main-wrapper">
         <div class="login-card">
