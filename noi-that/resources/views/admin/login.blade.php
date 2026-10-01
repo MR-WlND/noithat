@@ -102,7 +102,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            padding: 40px;
+            padding: 30px;
             color: white;
             overflow-y: auto;
         }
@@ -115,7 +115,7 @@
         }
         .left-content { position: relative; z-index: 2; }
         
-        .left-header { display: flex; align-items: center; gap: 15px; margin-bottom: 50px; }
+        .left-header { display: flex; align-items: center; gap: 15px; margin-bottom: 25px; }
         .logo-box { width: 44px; height: 44px; background: white; border-radius: 4px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
         .logo-box div { width: 16px; height: 16px; background: var(--brown); border-radius: 50%; }
         .left-header-text h3 { font-size: 1rem; font-weight: 600; letter-spacing: 1px; color: #f0c9a0; margin-bottom: 2px; }
@@ -127,10 +127,10 @@
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 12px;
-            padding: 30px;
-            margin-top: 40px;
+            padding: 25px;
+            margin-top: 25px;
         }
-        .glass-card h4 { font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 25px; display:flex; align-items:center; justify-content:center; gap:10px; font-weight:700; }
+        .glass-card h4 { font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 15px; display:flex; align-items:center; justify-content:center; gap:10px; font-weight:700; }
         .glass-quote { font-size: 1.05rem; font-family: var(--font-serif); font-style: italic; line-height: 1.6; margin-bottom: 15px; }
         .glass-desc { font-size: 0.85rem; line-height: 1.6; opacity: 0.9; }
         
@@ -143,7 +143,7 @@
             align-items: center;
             justify-content: center;
             position: relative;
-            padding: 40px;
+            padding: 30px;
             background: white;
             overflow-y: auto;
         }
@@ -155,8 +155,8 @@
         
         .admin-portal-badge {
             position: absolute;
-            top: 40px;
-            right: 40px;
+            top: 30px;
+            right: 30px;
             background: #f0f0f0;
             color: #666;
             font-size: 0.7rem;
@@ -166,19 +166,19 @@
             letter-spacing: 1px;
         }
         
-        .brand-tag { font-size: 0.8rem; font-weight: 700; color: var(--brown); letter-spacing: 1px; margin-bottom: 16px; display: block; text-transform: uppercase; }
-        .login-box h1 { font-family: var(--font-serif); font-size: 2.2rem; color: var(--text-dark); margin-bottom: 12px; font-weight: 700; }
-        .login-box > p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 30px; }
+        .brand-tag { font-size: 0.8rem; font-weight: 700; color: var(--brown); letter-spacing: 1px; margin-bottom: 10px; display: block; text-transform: uppercase; }
+        .login-box h1 { font-family: var(--font-serif); font-size: 2.2rem; color: var(--text-dark); margin-bottom: 8px; font-weight: 700; }
+        .login-box > p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px; }
         
         /* Role Banner */
         .role-banner {
             background: var(--brown-light);
             border-radius: 8px;
-            padding: 16px 20px;
+            padding: 12px 16px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 35px;
+            margin-bottom: 20px;
         }
         .role-info { display: flex; align-items: center; gap: 15px; }
         .role-icon { width: 36px; height: 36px; background: rgba(140, 94, 52, 0.15); color: var(--brown); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
@@ -187,8 +187,8 @@
         .role-badge { background: #e6dace; color: var(--brown-dark); font-size: 0.75rem; font-weight: 600; padding: 4px 10px; border-radius: 4px; white-space: nowrap; }
         
         /* Form */
-        .form-group { margin-bottom: 24px; position: relative; }
-        .form-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+        .form-group { margin-bottom: 16px; position: relative; }
+        .form-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
         .form-label { font-size: 0.75rem; font-weight: 700; color: var(--text-muted); letter-spacing: 0.5px; text-transform: uppercase; }
         .forgot-link { font-size: 0.8rem; color: var(--brown); text-decoration: none; font-weight: 500; }
         .forgot-link:hover { text-decoration: underline; }
@@ -198,7 +198,7 @@
         .input-wrapper i.icon-right { position: absolute; right: 16px; top: 50%; transform: translateY(-50%); color: #aaa; font-size: 1.1rem; cursor: pointer; padding: 5px; }
         .form-control {
             width: 100%;
-            padding: 14px 16px 14px 46px;
+            padding: 12px 14px 12px 42px;
             background: #f8f8f8;
             border: 1px solid transparent;
             border-radius: 6px;
@@ -209,7 +209,7 @@
         }
         .form-control:focus { outline: none; background: white; border-color: var(--brown); box-shadow: 0 0 0 4px rgba(140, 94, 52, 0.1); }
         
-        .form-options { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; font-size: 0.85rem; flex-wrap: wrap; gap: 10px; }
+        .form-options { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; font-size: 0.85rem; flex-wrap: wrap; gap: 10px; }
         .checkbox-label { display: flex; align-items: center; gap: 8px; cursor: pointer; color: var(--text-dark); font-weight: 500; }
         .checkbox-label input { width: 16px; height: 16px; accent-color: var(--brown); cursor: pointer; }
         .secure-badge { color: var(--text-muted); display: flex; align-items: center; gap: 6px; }
@@ -219,7 +219,7 @@
             background: var(--brown);
             color: white;
             border: none;
-            padding: 16px;
+            padding: 14px;
             border-radius: 6px;
             font-size: 1rem;
             font-weight: 600;
@@ -235,12 +235,12 @@
         .system-status {
             display: flex; justify-content: space-between; align-items: center;
             background: var(--bg-light); border-radius: 6px; padding: 12px 16px;
-            margin-top: 40px; font-size: 0.8rem; font-weight: 500; color: var(--text-muted);
+            margin-top: 25px; font-size: 0.8rem; font-weight: 500; color: var(--text-muted);
             flex-wrap: wrap; gap: 8px;
         }
         .status-dot { display: inline-block; width: 8px; height: 8px; background: var(--brown); border-radius: 50%; margin-right: 8px; }
         
-        .support-info { display: flex; justify-content: space-between; margin-top: 30px; font-size: 0.8rem; color: var(--text-muted); flex-wrap: wrap; gap: 8px; }
+        .support-info { display: flex; justify-content: space-between; margin-top: 20px; font-size: 0.8rem; color: var(--text-muted); flex-wrap: wrap; gap: 8px; }
         .support-info a { color: var(--brown); font-weight: 600; text-decoration: none; }
         
         /* Alert */
