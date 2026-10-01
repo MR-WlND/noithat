@@ -34,10 +34,6 @@
                 <a href="tel:0988248868" class="header-phone"><i class="fas fa-phone-alt"></i> 0988.248.868</a>
                 <a href="#lien-he" class="btn btn--primary">Nhận Báo Giá <i class="fas fa-arrow-right"></i></a>
             </div>
-            <!-- Mobile phone -->
-            <a href="tel:0988248868" class="header-phone-mobile">
-                <i class="fas fa-phone-alt"></i> 0988.248.868
-            </a>
             <!-- Hamburger -->
             <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
                 <span></span><span></span><span></span>
