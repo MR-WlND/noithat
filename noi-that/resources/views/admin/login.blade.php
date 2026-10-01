@@ -21,10 +21,31 @@
             --font-serif: "Playfair Display", serif;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: var(--font-sans); background-color: var(--bg-light); color: var(--text-dark); min-height: 100vh; display: flex; }
         
-        /* Layout */
-        .split-layout { display: flex; width: 100%; min-height: 100vh; }
+        /* Body acts as the backdrop */
+        body { 
+            font-family: var(--font-sans); 
+            background-color: #e9e5e1; /* Slightly darker background to make the card pop */
+            color: var(--text-dark); 
+            min-height: 100vh; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        /* Centered Card Layout */
+        .login-card { 
+            display: flex; 
+            width: 100%; 
+            max-width: 1200px; /* Responsive max width */
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+            /* Make height responsive but have a minimum */
+            min-height: min(90vh, 760px);
+        }
         
         /* Left Panel */
         .left-panel {
@@ -34,7 +55,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            padding: 40px;
+            padding: 4vw; /* Responsive padding */
             color: white;
         }
         .left-panel::before {
@@ -47,7 +68,7 @@
         .left-content { position: relative; z-index: 2; }
         
         .left-header { display: flex; align-items: center; gap: 15px; margin-bottom: 50px; }
-        .logo-box { width: 44px; height: 44px; background: white; border-radius: 4px; display: flex; align-items: center; justify-content: center; }
+        .logo-box { width: 44px; height: 44px; background: white; border-radius: 4px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
         .logo-box div { width: 16px; height: 16px; background: var(--brown); border-radius: 50%; }
         .left-header-text h3 { font-size: 1rem; font-weight: 600; letter-spacing: 1px; color: #f0c9a0; margin-bottom: 2px; }
         .left-header-text p { font-size: 0.95rem; font-weight: 500; }
@@ -58,13 +79,12 @@
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 12px;
-            padding: 40px 30px;
+            padding: 3vw; /* Responsive padding */
             margin-top: 40px;
-            text-align: center;
         }
-        .glass-card h4 { font-family: var(--font-serif); font-size: 1.8rem; margin-bottom: 25px; }
-        .glass-quote { font-size: 1.15rem; font-family: var(--font-serif); font-style: italic; line-height: 1.6; margin-bottom: 15px; text-align: left; }
-        .glass-desc { font-size: 0.9rem; line-height: 1.6; opacity: 0.9; text-align: left; }
+        .glass-card h4 { font-family: var(--font-serif); font-size: clamp(1.4rem, 2vw, 1.8rem); margin-bottom: 25px; display:flex; align-items:center; justify-content:center; gap:10px; font-weight:700; }
+        .glass-quote { font-size: clamp(1rem, 1.5vw, 1.15rem); font-family: var(--font-serif); font-style: italic; line-height: 1.6; margin-bottom: 15px; }
+        .glass-desc { font-size: clamp(0.85rem, 1vw, 0.9rem); line-height: 1.6; opacity: 0.9; }
         
         .left-footer { display: flex; justify-content: space-between; font-size: 0.75rem; font-weight: 600; letter-spacing: 1px; color: rgba(255,255,255,0.7); text-transform: uppercase; }
         
@@ -75,13 +95,13 @@
             align-items: center;
             justify-content: center;
             position: relative;
-            padding: 40px;
+            padding: 4vw; /* Responsive padding */
             background: white;
         }
         
         .login-box {
             width: 100%;
-            max-width: 520px;
+            max-width: 480px;
         }
         
         .admin-portal-badge {
@@ -98,7 +118,7 @@
         }
         
         .brand-tag { font-size: 0.8rem; font-weight: 700; color: var(--brown); letter-spacing: 1px; margin-bottom: 16px; display: block; text-transform: uppercase; }
-        .login-box h1 { font-family: var(--font-serif); font-size: 2.4rem; color: var(--text-dark); margin-bottom: 12px; font-weight: 700; }
+        .login-box h1 { font-family: var(--font-serif); font-size: clamp(2rem, 3vw, 2.4rem); color: var(--text-dark); margin-bottom: 12px; font-weight: 700; }
         .login-box > p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 30px; }
         
         /* Role Banner */
@@ -112,10 +132,10 @@
             margin-bottom: 35px;
         }
         .role-info { display: flex; align-items: center; gap: 15px; }
-        .role-icon { width: 36px; height: 36px; background: rgba(140, 94, 52, 0.15); color: var(--brown); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
+        .role-icon { width: 36px; height: 36px; background: rgba(140, 94, 52, 0.15); color: var(--brown); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
         .role-text h4 { font-size: 0.95rem; color: var(--text-dark); font-weight: 600; margin-bottom: 3px; }
         .role-text p { font-size: 0.8rem; color: var(--text-muted); }
-        .role-badge { background: #e6dace; color: var(--brown-dark); font-size: 0.75rem; font-weight: 600; padding: 4px 10px; border-radius: 4px; }
+        .role-badge { background: #e6dace; color: var(--brown-dark); font-size: 0.75rem; font-weight: 600; padding: 4px 10px; border-radius: 4px; white-space: nowrap; }
         
         /* Form */
         .form-group { margin-bottom: 24px; position: relative; }
@@ -126,7 +146,7 @@
         
         .input-wrapper { position: relative; }
         .input-wrapper i.icon-left { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: #aaa; font-size: 1.1rem; }
-        .input-wrapper i.icon-right { position: absolute; right: 16px; top: 50%; transform: translateY(-50%); color: #aaa; font-size: 1.1rem; cursor: pointer; }
+        .input-wrapper i.icon-right { position: absolute; right: 16px; top: 50%; transform: translateY(-50%); color: #aaa; font-size: 1.1rem; cursor: pointer; padding: 5px; }
         .form-control {
             width: 100%;
             padding: 14px 16px 14px 46px;
@@ -140,7 +160,7 @@
         }
         .form-control:focus { outline: none; background: white; border-color: var(--brown); box-shadow: 0 0 0 4px rgba(140, 94, 52, 0.1); }
         
-        .form-options { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; font-size: 0.85rem; }
+        .form-options { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; font-size: 0.85rem; flex-wrap: wrap; gap: 10px; }
         .checkbox-label { display: flex; align-items: center; gap: 8px; cursor: pointer; color: var(--text-dark); font-weight: 500; }
         .checkbox-label input { width: 16px; height: 16px; accent-color: var(--brown); cursor: pointer; }
         .secure-badge { color: var(--text-muted); display: flex; align-items: center; gap: 6px; }
@@ -167,10 +187,11 @@
             display: flex; justify-content: space-between; align-items: center;
             background: var(--bg-light); border-radius: 6px; padding: 12px 16px;
             margin-top: 40px; font-size: 0.8rem; font-weight: 500; color: var(--text-muted);
+            flex-wrap: wrap; gap: 8px;
         }
         .status-dot { display: inline-block; width: 8px; height: 8px; background: var(--brown); border-radius: 50%; margin-right: 8px; }
         
-        .support-info { display: flex; justify-content: space-between; margin-top: 30px; font-size: 0.8rem; color: var(--text-muted); }
+        .support-info { display: flex; justify-content: space-between; margin-top: 30px; font-size: 0.8rem; color: var(--text-muted); flex-wrap: wrap; gap: 8px; }
         .support-info a { color: var(--brown); font-weight: 600; text-decoration: none; }
         
         /* Alert */
@@ -179,20 +200,18 @@
 
         @media (max-width: 992px) {
             .left-panel { display: none; }
-            .right-panel { width: 100%; }
+            .right-panel { width: 100%; padding: 40px; }
             .admin-portal-badge { display: none; }
+            .login-card { min-height: auto; }
         }
         @media (max-width: 576px) {
-            .right-panel { padding: 20px; align-items: flex-start; padding-top: 40px; }
-            .login-box h1 { font-size: 1.8rem; }
+            .right-panel { padding: 25px 20px; }
             .role-banner { flex-direction: column; align-items: flex-start; gap: 12px; }
-            .form-options { flex-direction: column; align-items: flex-start; gap: 15px; }
-            .system-status { flex-direction: column; align-items: flex-start; gap: 10px; }
         }
     </style>
 </head>
 <body>
-    <div class="split-layout">
+    <div class="login-card">
         <!-- Left Panel -->
         <div class="left-panel">
             <div class="left-content">
@@ -205,12 +224,12 @@
                 </div>
                 
                 <div class="glass-card">
-                    <h4 style="display:flex; align-items:center; justify-content:center; gap:10px; font-family:var(--font-sans); font-size:1.4rem; font-weight:700;">
-                        <i class="fas fa-wind" style="color:var(--brown);"></i> MR.WIND <span style="font-weight:400; font-size:1.2rem;">Interior</span>
+                    <h4>
+                        <i class="fas fa-wind" style="color:var(--brown);"></i> MR.WIND <span style="font-weight:400; font-size:inherit;">Interior</span>
                     </h4>
                     
                     <p class="glass-quote">"Nét tinh gọn của người Nhật, chuẩn mực chế tác thủ công Việt Nam."</p>
-                    <p class="glass-desc">Xưởng mộc kiến trúc Chàng Sơn • Điều phối dự án dân dụng &amp; biệt thự cao cấp.</p>
+                    <p class="glass-desc">Xưởng mộc kiến trúc Chàng Sơn &bull; Điều phối dự án dân dụng &amp; biệt thự cao cấp.</p>
                 </div>
             </div>
             
