@@ -34,6 +34,10 @@
                 <a href="tel:0988248868" class="header-phone"><i class="fas fa-phone-alt"></i> 0988.248.868</a>
                 <a href="#lien-he" class="btn btn--primary">Nhận Báo Giá <i class="fas fa-arrow-right"></i></a>
             </div>
+            <!-- Mobile phone -->
+            <a href="tel:0988248868" class="header-phone-mobile">
+                <i class="fas fa-phone-alt"></i> 0988.248.868
+            </a>
             <!-- Hamburger -->
             <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
                 <span></span><span></span><span></span>
@@ -127,12 +131,20 @@
     if (btn && nav) {
         btn.addEventListener("click", function() {
             nav.classList.toggle("open");
+            btn.classList.toggle("active");
         });
-        // Close when clicking a link inside mobile nav
         nav.querySelectorAll("a").forEach(function(link) {
             link.addEventListener("click", function() {
                 nav.classList.remove("open");
+                btn.classList.remove("active");
             });
+        });
+        // Close on outside click
+        document.addEventListener("click", function(e) {
+            if (!btn.contains(e.target) && !nav.contains(e.target)) {
+                nav.classList.remove("open");
+                btn.classList.remove("active");
+            }
         });
     }
     </script>
