@@ -70,18 +70,6 @@
             padding: 10px 0;
         }
         
-        .bottom-bar {
-            padding: 10px 0 15px 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.7rem;
-            color: #7d7265;
-            font-weight: 500;
-            flex-shrink: 0;
-        }
-        .bottom-bar .dot { margin: 0 6px; color: #d0c8be; font-size: 0.6rem; }
-        
         /* Centered Card Layout */
         .login-card { 
             display: flex; 
@@ -381,12 +369,6 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>
-
-    <div class="bottom-bar">
-        <div>&copy; 2025 MR.WIND Interior <span class="dot">&bull;</span> Kiến trúc &amp; Sản xuất Nội thất Gỗ tự nhiên <span class="dot">&bull;</span> Thạch Thất, Hà Nội.</div>
-        <div>Phiên bản v2.5.4 (Enterprise) <span class="dot">&bull;</span> it@mrwind.interior.vn</div>
     </div>
 </div>
     <script>
