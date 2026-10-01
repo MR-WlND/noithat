@@ -1,4 +1,4 @@
-﻿/* ===================================================
+/* ===================================================
    CSS VARIABLES & RESET
 =================================================== */
 :root {
@@ -473,9 +473,9 @@ textarea { resize:vertical; min-height:88px; }
     .wf-step {
         text-align:left; padding:16px 15px;
         display:grid !important; grid-template-columns:42px 1fr;
-        gap:12px; align-items:start;
+        row-gap:0; column-gap:12px; align-items:start;
     }
-    .wf-num { margin:0 !important; width:34px; height:34px; font-size:0.85rem; }
+    .wf-num { margin:0 !important; width:34px; height:34px; font-size:0.85rem; grid-row: 1 / 4; }
     .wf-step span { margin-bottom:3px; font-size:0.62rem; }
     .wf-step h4 { font-size:0.91rem; margin-bottom:5px; }
     .wf-step p { font-size:0.8rem; }
@@ -524,5 +524,5 @@ textarea { resize:vertical; min-height:88px; }
     .contact__hotline strong { font-size:0.95rem; }
 
     .wf-step { grid-template-columns:1fr !important; text-align:center; gap:8px; }
-    .wf-num { margin:0 auto !important; }
+    .wf-num { margin:0 auto 8px !important; grid-row:auto; }
 }
