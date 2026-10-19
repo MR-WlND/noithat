@@ -44,6 +44,54 @@ input,select,textarea,button { font-family:var(--sans); }
 }
 .logo-text { font-family:var(--serif); font-size:1.15rem; font-weight:700; color:var(--text); line-height:1; display:block; }
 .logo-accent { font-size:0.65rem; letter-spacing:3px; color:var(--muted); display:block; margin-top:2px; }
+
+/* Logo Luxury */
+.logo--luxury { display:flex; align-items:center; gap:0; }
+
+.logo__img {
+    height:44px; width:44px; object-fit:cover; flex-shrink:0;
+    border-radius:50%;
+}
+.logo__img--footer {
+    height:40px; width:40px;
+    border-radius:50%;
+    object-fit:cover;
+    filter:none;
+}
+
+/* Divider line giữa icon và text */
+.logo__brand {
+    display:flex; flex-direction:column; justify-content:center;
+    padding-left:12px;
+    margin-left:12px;
+    border-left:1px solid rgba(155,107,58,0.3);
+    gap:3px;
+}
+
+.logo__name {
+    font-family:var(--serif);
+    font-size:1.18rem;
+    font-weight:700;
+    letter-spacing:1.5px;
+    color:var(--text);
+    line-height:1;
+    display:block;
+}
+.logo__name--footer { color:#fff; }
+
+.logo__tagline {
+    font-size:0.58rem;
+    font-weight:600;
+    letter-spacing:3.5px;
+    color:var(--brown);
+    text-transform:uppercase;
+    display:block;
+    line-height:1;
+}
+
+/* Footer logo brand divider màu sáng hơn */
+.footer-logo .logo__brand { border-left-color:rgba(255,255,255,0.15); }
+.footer-logo .logo__tagline { color:var(--brown); opacity:.9; }
 /* Nav */
 .nav-list { display:flex; gap:32px; align-items:center; }
 .nav-link { font-size:0.82rem; font-weight:500; letter-spacing:.3px; color:var(--text); transition:color .2s; }

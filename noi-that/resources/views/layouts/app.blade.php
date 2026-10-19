@@ -14,11 +14,11 @@
 <body>
     <header class="header">
         <div class="container header-container">
-            <a href="{{ route('home') }}" class="logo">
-                <div class="logo-icon">M</div>
-                <div>
-                    <span class="logo-text">MR.WIND</span>
-                    <span class="logo-accent">INTERIOR</span>
+            <a href="{{ route('home') }}" class="logo logo--luxury">
+                <img src="{{ asset('images/Logo B HOME.png') }}" alt="B HOME Logo" class="logo__img">
+                <div class="logo__brand">
+                    <span class="logo__name">B HOME</span>
+                    <span class="logo__tagline">INTERIOR · DESIGN</span>
                 </div>
             </a>
             <nav class="nav">
@@ -64,11 +64,11 @@
     <footer class="footer">
         <div class="container footer-container">
             <div class="footer-col">
-                <a href="{{ route('home') }}" class="logo footer-logo">
-                    <div class="logo-icon">M</div>
-                    <div>
-                        <span class="logo-text">MR.WIND</span>
-                        <span class="logo-accent" style="color: #999;">INTERIOR</span>
+                <a href="{{ route('home') }}" class="logo logo--luxury footer-logo">
+                    <img src="{{ asset('images/Logo B HOME.png') }}" alt="B HOME Logo" class="logo__img logo__img--footer">
+                    <div class="logo__brand">
+                        <span class="logo__name logo__name--footer">B HOME</span>
+                        <span class="logo__tagline">INTERIOR · DESIGN</span>
                     </div>
                 </a>
                 <p>Xưởng sản xuất trực tiếp và kiến tạo những không gian sống "chuẩn Nhật Bản" đẳng cấp, tinh tế. Mọi chi tiết thi công mộc đều được chăm chút tỉ mỉ từ những người thợ lành nghề.</p>
