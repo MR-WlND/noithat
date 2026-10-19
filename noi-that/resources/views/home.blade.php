@@ -44,11 +44,11 @@
             <span>Khách hàng hài lòng</span>
         </div>
         <div class="hero__stat">
-            <strong>05 Năm</strong>
+            <strong>07 Năm</strong>
             <span>Kinh nghiệm đỉnh cao</span>
         </div>
         <div class="hero__stat">
-            <strong>1.500m²</strong>
+            <strong>200m²</strong>
             <span>Diện tích xưởng mộc</span>
         </div>
     </div>
