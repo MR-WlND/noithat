@@ -15,9 +15,22 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $cat1 = Category::create(['name' => 'Tủ Bếp', 'slug' => 'tu-bep']);
-        $cat2 = Category::create(['name' => 'Tủ Áo', 'slug' => 'tu-ao']);
-        $cat3 = Category::create(['name' => 'Nội thất Căn hộ', 'slug' => 'noi-that-can-ho']);
+        // Admin user
+        \App\Models\User::firstOrCreate(
+            ['email' => 'long16730z@gmail.com'],
+            [
+                'name' => 'Administrator',
+                'password' => \Illuminate\Support\Facades\Hash::make('12345678'),
+                'title' => 'Trưởng nhóm Thiết Kế',
+                'phone' => '0988.248.868',
+                'role' => 'Quản Trị Viên',
+                'two_factor_enabled' => true,
+            ]
+        );
+
+        $cat1 = Category::firstOrCreate(['slug' => 'tu-bep'], ['name' => 'Tủ Bếp']);
+        $cat2 = Category::firstOrCreate(['slug' => 'tu-ao'], ['name' => 'Tủ Áo']);
+        $cat3 = Category::firstOrCreate(['slug' => 'noi-that-can-ho'], ['name' => 'Nội thất Căn hộ']);
 
         $proj1 = Project::create([
             'title' => 'Tủ bếp MDF An Cường - Chị Lan',
