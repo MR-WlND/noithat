@@ -3,8 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Xưởng Nội Thất Cao Cấp</title>
+    <title>Xưởng Nội Thất Cao Cấp - B HOME</title>
     <meta name="description" content="Chuyên thiết kế và thi công nội thất cao cấp: Tủ bếp, Tủ áo, Nội thất căn hộ trọn gói. Xưởng sản xuất trực tiếp, không qua trung gian.">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
+    <link rel="apple-touch-icon" href="{{ asset('favicon.png') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -71,7 +75,7 @@
                         <span class="logo__tagline">INTERIOR · DESIGN</span>
                     </div>
                 </a>
-                <p>Xưởng sản xuất trực tiếp và kiến tạo những không gian sống "chuẩn Nhật Bản" đẳng cấp, tinh tế. Mọi chi tiết thi công mộc đều được chăm chút tỉ mỉ từ những người thợ lành nghề.</p>
+                <p>Xưởng mộc gia đình sản xuất may đo trực tiếp theo yêu cầu. Kiến tạo không gian sống tinh tế và đẳng cấp, không qua trung gian, chuẩn tỉ lệ và chất lượng đến từng chi tiết.</p>
                 <div class="footer-socials">
                     <a href="#"><i class="fab fa-facebook-f"></i></a>
                     <a href="#"><i class="fab fa-instagram"></i></a>
@@ -81,10 +85,9 @@
             <div class="footer-col">
                 <h3 class="footer-title">Thông Tin Liên Hệ</h3>
                 <ul class="footer-contact">
-                    <li><i class="fas fa-map-marker-alt"></i> Showroom: Hà Đông, Hà Nội</li>
-                    <li><i class="fas fa-industry"></i> Xưởng: Quốc Oai, Hà Nội</li>
+                    <li><i class="fas fa-map-marker-alt"></i> 182 Phố Hát, Hát Môn, Phúc Thọ, Hà Nội</li>
                     <li><i class="fas fa-phone-alt"></i> Hotline: 0988.248.868</li>
-                    <li><i class="fas fa-envelope"></i> contact@mrwind.com</li>
+                    <li><i class="fas fa-envelope"></i> contact@bhome.vn</li>
                 </ul>
             </div>
             <div class="footer-col">
@@ -107,17 +110,17 @@
         </div>
         <div class="footer-bottom">
             <div class="container">
-                <p>&copy; 2026 MR.WIND INTERIOR. Kiến tạo không gian sống chuẩn mực.</p>
+                <p>&copy; 2026 B HOME INTERIOR. Kiến tạo không gian sống chuẩn mực.</p>
             </div>
         </div>
     </footer>
 
     <!-- Floating Buttons -->
     <div class="floating-buttons">
-        <a href="https://zalo.me/0988xxxxxx" target="_blank" class="float-btn zalo-btn">
+        <a href="https://zalo.me/0988248868" target="_blank" class="float-btn zalo-btn" title="Chat Zalo">
             Zalo
         </a>
-        <a href="tel:0988xxxxxx" class="float-btn phone-btn">
+        <a href="tel:0988248868" class="float-btn phone-btn" title="Gọi ngay">
             <i class="fas fa-phone"></i>
         </a>
     </div>

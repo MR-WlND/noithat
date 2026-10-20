@@ -5,7 +5,7 @@
     <div class="container">
         <div class="section-header text-center">
             <h1 class="section-title">Dự Án Đã Thi Công</h1>
-            <p class="section-desc">Khám phá các công trình nội thất do MR.WIND thực hiện.</p>
+            <p class="section-desc">Khám phá các công trình nội thất do B HOME thực hiện.</p>
         </div>
         
         <!-- Filter Categories -->
