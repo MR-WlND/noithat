@@ -32,7 +32,7 @@ if [ "$APP_ENV" = "production" ]; then
 fi
 
 echo "Starting PHP-FPM..."
-php-fpm83 -D || php-fpm -D
+php-fpm -D
 
 echo "Starting Nginx on port ${PORT}..."
 exec nginx -g "daemon off;"
