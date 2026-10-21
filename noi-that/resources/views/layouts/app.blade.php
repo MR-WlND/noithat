@@ -28,15 +28,14 @@
             <nav class="nav">
                 <ul class="nav-list">
                     <li><a href="{{ route('home') }}" class="nav-link active">Trang Chủ</a></li>
-                    <li><a href="#ve-chung-toi" class="nav-link">Về Chúng Tôi</a></li>
-                    <li><a href="#hang-muc" class="nav-link">Hạng Mục Thi Công</a></li>
+                    <li><a href="{{ route('home') }}#ve-chung-toi" class="nav-link">Về Chúng Tôi</a></li>
+                    <li><a href="{{ route('home') }}#hang-muc" class="nav-link">Hạng Mục Thi Công</a></li>
                     <li><a href="/du-an" class="nav-link">Dự Án</a></li>
-                    <li><a href="#lien-he" class="nav-link">Liên Hệ</a></li>
                 </ul>
             </nav>
             <div class="header-right">
                 <a href="tel:0988248868" class="header-phone"><i class="fas fa-phone-alt"></i> 0988.248.868</a>
-                <a href="#lien-he" class="btn btn--primary">Nhận Báo Giá <i class="fas fa-arrow-right"></i></a>
+                <a href="{{ route('home') }}#lien-he" class="btn btn--primary">Nhận Báo Giá <i class="fas fa-arrow-right"></i></a>
             </div>
             <!-- Hamburger -->
             <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
@@ -49,13 +48,13 @@
     <nav class="mobile-nav" id="mobileNav">
         <ul>
             <li><a href="{{ route('home') }}">Trang Chủ</a></li>
-            <li><a href="#ve-chung-toi">Về Chúng Tôi</a></li>
-            <li><a href="#hang-muc">Hạng Mục Thi Công</a></li>
+            <li><a href="{{ route('home') }}#ve-chung-toi">Về Chúng Tôi</a></li>
+            <li><a href="{{ route('home') }}#hang-muc">Hạng Mục Thi Công</a></li>
             <li><a href="/du-an">Dự Án</a></li>
-            <li><a href="#lien-he">Liên Hệ</a></li>
         </ul>
         <div class="mobile-nav__cta">
-            <a href="tel:0988248868" class="btn btn--primary btn--full"><i class="fas fa-phone-alt"></i> Gọi Ngay: 0988.248.868</a>
+            <a href="{{ route('home') }}#lien-he" class="btn btn--primary btn--full"><i class="fas fa-paper-plane"></i> Nhận Báo Giá Miễn Phí</a>
+            <a href="tel:0988248868" class="btn btn--primary btn--full" style="margin-top:8px; background:transparent; border:1px solid rgba(255,255,255,0.3); color:inherit;"><i class="fas fa-phone-alt"></i> Gọi Ngay: 0988.248.868</a>
         </div>
     </nav>
 
@@ -94,9 +93,9 @@
                 <h3 class="footer-title">Liên Kết Nhanh</h3>
                 <ul class="footer-links">
                     <li><a href="/du-an">Dự Án Đã Làm</a></li>
-                    <li><a href="#quy-trinh">Quy Trình Thi Công</a></li>
-                    <li><a href="#hang-muc">Hạng Mục Tủ Bếp</a></li>
-                    <li><a href="#hang-muc">Hạng Mục Tủ Áo</a></li>
+                    <li><a href="{{ route('home') }}#quy-trinh">Quy Trình Thi Công</a></li>
+                    <li><a href="{{ route('home') }}#hang-muc">Hạng Mục Tủ Bếp</a></li>
+                    <li><a href="{{ route('home') }}#hang-muc">Hạng Mục Tủ Áo</a></li>
                 </ul>
             </div>
             <div class="footer-col">
