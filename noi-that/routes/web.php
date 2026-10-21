@@ -33,6 +33,7 @@ Route::post('/lien-he', [ContactController::class, 'store'])->name('contact.stor
 |--------------------------------------------------------------------------
 */
 Route::get('/gioi-thieu', [PageController::class, 'about'])->name('page.about');
+Route::get('/bao-gia', [PageController::class, 'pricing'])->name('page.pricing');
 Route::get('/chinh-sach-bao-hanh', [PageController::class, 'warranty'])->name('page.warranty');
 Route::get('/chinh-sach-bao-mat', [PageController::class, 'privacy'])->name('page.privacy');
 Route::get('/dieu-khoan-su-dung', [PageController::class, 'terms'])->name('page.terms');

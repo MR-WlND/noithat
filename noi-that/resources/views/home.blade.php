@@ -235,7 +235,7 @@
             @forelse($featuredProjects as $project)
             <a href="/du-an/{{ $project->slug }}" class="proj-card">
                 <div class="proj-card__img">
-                    <img src="{{ $project->cover_image }}" alt="{{ $project->title }}">
+                    <img src="{{ $project->cover_image_url }}" alt="{{ $project->title }}">
                     <span class="proj-card__cat">{{ $project->category->name ?? 'Dự Án' }}</span>
                 </div>
                 <div class="proj-card__body">
@@ -394,7 +394,7 @@
                      onmouseout="this.style.transform='';this.style.boxShadow=''">
                 @if($post->thumbnail)
                 <div style="overflow:hidden; height:200px;">
-                    <img src="{{ $post->thumbnail }}" alt="{{ $post->title }}"
+                    <img src="{{ $post->thumbnail_url }}" alt="{{ $post->title }}"
                          style="width:100%; height:100%; object-fit:cover; transition:transform 0.4s;"
                          onmouseover="this.style.transform='scale(1.05)'"
                          onmouseout="this.style.transform=''">
@@ -409,7 +409,7 @@
                             <i class="fas fa-clock" style="margin-right:4px;"></i>{{ $post->read_time }}
                         </span>
                     </div>
-                    <h3 style="font-family:'Playfair Display',serif; font-size:1.08rem; color:#2c2724; line-height:1.45; margin-bottom:10px;">
+                    <h3 style="font-family:var(--serif); font-size:1.08rem; color:#2c2724; line-height:1.45; margin-bottom:10px;">
                         {{ $post->title }}
                     </h3>
                     <p style="font-size:0.87rem; color:#888; line-height:1.6; margin-bottom:18px;">

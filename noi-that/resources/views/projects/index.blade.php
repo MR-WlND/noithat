@@ -23,7 +23,7 @@
             @forelse($projects as $project)
             <div class="project-card">
                 <div class="project-img">
-                    <img src="{{ $project->cover_image }}" alt="{{ $project->title }}">
+                    <img src="{{ $project->cover_image_url }}" alt="{{ $project->title }}">
                     <div class="project-overlay">
                         <a href="/du-an/{{ $project->slug }}" class="btn btn-outline-light">Xem Chi Tiết</a>
                     </div>

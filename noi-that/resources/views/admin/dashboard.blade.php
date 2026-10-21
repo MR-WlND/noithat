@@ -62,7 +62,7 @@
                     <a href="{{ route('admin.projects.edit', $project) }}" class="dashboard-project">
                         <span class="dashboard-project-thumb">
                             @if($project->cover_image)
-                                <img src="{{ $project->cover_image }}" alt="" loading="lazy">
+                                <img src="{{ $project->cover_image_url }}" alt="" loading="lazy">
                             @else
                                 <i class="far fa-image"></i>
                             @endif

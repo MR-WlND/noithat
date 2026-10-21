@@ -46,8 +46,8 @@
             <nav class="nav">
                 <ul class="nav-list">
                     <li><a href="{{ route('home') }}" class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}">Trang Chủ</a></li>
-                    <li><a href="{{ route('home') }}#ve-chung-toi" class="nav-link">Về Chúng Tôi</a></li>
-                    <li><a href="{{ route('home') }}#hang-muc" class="nav-link">Hạng Mục Thi Công</a></li>
+                    <li><a href="{{ route('page.about') }}" class="nav-link">Giới Thiệu</a></li>
+                    <li><a href="{{ route('page.pricing') }}" class="nav-link {{ request()->routeIs('page.pricing') ? 'active' : '' }}">Báo Giá</a></li>
                     <li><a href="/du-an" class="nav-link">Dự Án</a></li>
                     <li><a href="{{ route('posts.index') }}" class="nav-link {{ request()->routeIs('posts.*') ? 'active' : '' }}">Bài Viết</a></li>
                 </ul>
@@ -67,8 +67,8 @@
     <nav class="mobile-nav" id="mobileNav">
         <ul>
             <li><a href="{{ route('home') }}">Trang Chủ</a></li>
-            <li><a href="{{ route('home') }}#ve-chung-toi">Về Chúng Tôi</a></li>
-            <li><a href="{{ route('home') }}#hang-muc">Hạng Mục Thi Công</a></li>
+            <li><a href="{{ route('page.about') }}">Giới Thiệu</a></li>
+            <li><a href="{{ route('page.pricing') }}">Báo Giá</a></li>
             <li><a href="/du-an">Dự Án</a></li>
             <li><a href="{{ route('posts.index') }}">Bài Viết</a></li>
         </ul>

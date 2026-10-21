@@ -66,9 +66,7 @@
             <label for="cover_image">Ảnh đại diện</label>
             @if($project->cover_image)
                 @php
-                    $currentImg = str_starts_with($project->cover_image, 'http')
-                        ? $project->cover_image
-                        : asset('storage/' . $project->cover_image);
+                    $currentImg = $project->cover_image_url;
                 @endphp
                 <div style="margin-bottom:10px;">
                     <img src="{{ $currentImg }}" alt="{{ $project->title }}"
@@ -78,6 +76,23 @@
             @endif
             <input type="file" id="cover_image" name="cover_image" accept="image/*"
                    style="padding:11px 14px; border:1px solid #ded6cc; border-radius:6px; font-size:0.9rem; background:#faf8f5;">
+        </div>
+
+        <div class="fg">
+            <label for="gallery_images">Ảnh thư viện dự án</label>
+            @if($project->images->isNotEmpty())
+                <div style="display:flex; flex-wrap:wrap; gap:10px; margin-bottom:10px;">
+                    @foreach($project->images as $image)
+                        <img src="{{ $image->image_url }}" alt="Ảnh dự án {{ $project->title }}"
+                             style="width:100px; height:75px; border-radius:6px; object-fit:cover; border:1px solid #e8dfd5;">
+                    @endforeach
+                </div>
+                <p style="font-size:0.78rem; color:#777; margin-top:0;">Ảnh hiện tại sẽ được giữ lại. Ảnh mới sẽ được thêm vào thư viện.</p>
+            @endif
+            <input type="file" id="gallery_images" name="gallery_images[]" accept="image/jpeg,image/png,image/gif,image/webp"
+                   style="padding:11px 14px; border:1px solid #ded6cc; border-radius:6px; font-size:0.9rem; background:#faf8f5;"
+                   multiple>
+            <small style="display:block; margin-top:6px; color:#777;">Có thể chọn tối đa 20 ảnh, mỗi ảnh không quá 2 MB.</small>
         </div>
 
         <div class="fg">

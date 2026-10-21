@@ -2,9 +2,8 @@
 
 @php
     $publishedAt = $post->published_at ?? $post->created_at;
-    $postImage = $post->thumbnail
-        ? (str_starts_with($post->thumbnail, 'http') ? $post->thumbnail : asset('storage/'.$post->thumbnail))
-        : 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200&auto=format&fit=crop';
+    $postImage = $post->thumbnail_url
+        ?? 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200&auto=format&fit=crop';
     $descriptionSource = filled($post->excerpt) ? $post->excerpt : ($post->content ?? '');
     $seoDescription = Str::limit(
         trim(preg_replace('/\s+/', ' ', html_entity_decode(strip_tags($descriptionSource), ENT_QUOTES | ENT_HTML5, 'UTF-8'))),
@@ -76,30 +75,25 @@
 @section('content')
 <script type="application/ld+json">@json($articleSchema)</script>
 <script type="application/ld+json">@json($breadcrumbSchema)</script>
-<section class="page-header">
-    <div class="container">
-        <div class="post-header">
-            <nav class="post-breadcrumbs" aria-label="Breadcrumb">
-                <ol>
-                    <li><a href="{{ route('home') }}">Trang chủ</a></li>
-                    <li><a href="{{ route('posts.index') }}">Bài viết</a></li>
-                    <li aria-current="page">{{ $post->title }}</li>
-                </ol>
-            </nav>
-            <span class="post-header__category">{{ $post->category ?? 'Bài Viết' }}</span>
-            <h1>{{ $post->title }}</h1>
-            <div class="post-header__meta">
-                <span><i class="far fa-user"></i> B HOME</span>
-                <time datetime="{{ $publishedAt->toIso8601String() }}"><i class="far fa-calendar-alt"></i> {{ $publishedAt->format('d/m/Y') }}</time>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="page-content">
+<section class="post-detail page-content">
     <div class="container">
         <div class="post-layout">
             <article class="post-article">
+                <header class="post-article__header">
+                    <nav class="post-breadcrumbs" aria-label="Breadcrumb">
+                        <ol>
+                            <li><a href="{{ route('home') }}">Trang chủ</a></li>
+                            <li><a href="{{ route('posts.index') }}">Bài viết</a></li>
+                            <li aria-current="page">{{ $post->title }}</li>
+                        </ol>
+                    </nav>
+                    <span class="post-header__category">{{ $post->category ?? 'Bài Viết' }}</span>
+                    <h1>{{ $post->title }}</h1>
+                    <div class="post-header__meta">
+                        <span><i class="far fa-user"></i> B HOME</span>
+                        <time datetime="{{ $publishedAt->toIso8601String() }}"><i class="far fa-calendar-alt"></i> {{ $publishedAt->format('d/m/Y') }}</time>
+                    </div>
+                </header>
                 <div class="post-article__image">
                     <img src="{{ $postImage }}" alt="{{ $post->title }}">
                 </div>
@@ -111,21 +105,104 @@
                 </div>
             </article>
 
-            @if(!empty($relatedPosts) && $relatedPosts->count() > 0)
             <aside class="post-sidebar">
-                <h3 class="post-sidebar__title">Bài viết liên quan</h3>
-                @foreach($relatedPosts as $related)
-                <a href="{{ route('posts.show', $related->slug) }}" class="related-post">
-                    <img src="{{ $related->thumbnail ? (str_starts_with($related->thumbnail, 'http') ? $related->thumbnail : asset('storage/'.$related->thumbnail)) : 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&auto=format&fit=crop' }}" alt="{{ $related->title }}">
-                    <div>
-                        <h4>{{ Str::limit($related->title, 60) }}</h4>
-                        <time datetime="{{ ($related->published_at ?? $related->created_at)->toIso8601String() }}">{{ ($related->published_at ?? $related->created_at)->format('d/m/Y') }}</time>
+                <section class="post-contact-card">
+                    <div class="post-contact-card__phone">
+                        <i class="fas fa-phone-alt"></i>
+                        <div>
+                            <span>Tư vấn trực tiếp</span>
+                            <a href="tel:0962282204">0962 282 204</a>
+                        </div>
                     </div>
-                </a>
-                @endforeach
+                    <h2>Đăng ký khảo sát tại nhà</h2>
+                    <p>Để lại thông tin, B HOME sẽ liên hệ tư vấn và hẹn lịch khảo sát phù hợp.</p>
+
+                    @if(session('success'))
+                        <div class="post-contact-alert" role="status">{{ session('success') }}</div>
+                    @endif
+
+                    <form action="{{ route('contact.store') }}" method="POST" class="post-contact-form">
+                        @csrf
+                        <div class="f-group">
+                            <label for="post-contact-name">Họ tên <span>*</span></label>
+                            <input id="post-contact-name" type="text" name="name" value="{{ old('name') }}" placeholder="Ví dụ: Anh Quân" required>
+                            @error('name')
+                                <small class="post-contact-error">{{ $message }}</small>
+                            @enderror
+                        </div>
+                        <div class="f-group">
+                            <label for="post-contact-phone">Số điện thoại <span>*</span></label>
+                            <input id="post-contact-phone" type="tel" name="phone" value="{{ old('phone') }}" placeholder="Ví dụ: 0962 xxx xxx" required>
+                            @error('phone')
+                                <small class="post-contact-error">{{ $message }}</small>
+                            @enderror
+                        </div>
+                        <div class="f-group">
+                            <label for="post-contact-category">Nhu cầu của anh/chị</label>
+                            <select id="post-contact-category" name="category">
+                                @php
+                                    $contactCategories = ['Tủ bếp', 'Phòng khách', 'Phòng ngủ', 'Toàn bộ nhà'];
+                                    $selectedCategory = old('category', $post->category);
+                                @endphp
+                                @if($selectedCategory && !in_array($selectedCategory, $contactCategories, true))
+                                    <option value="{{ $selectedCategory }}" selected>{{ $selectedCategory }}</option>
+                                @endif
+                                @foreach($contactCategories as $category)
+                                    <option value="{{ $category }}" @selected($selectedCategory === $category)>{{ $category }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="f-group">
+                            <label for="post-contact-message">Nội dung cần tư vấn</label>
+                            <textarea id="post-contact-message" name="message" rows="3" placeholder="Chia sẻ nhu cầu hoặc câu hỏi của anh/chị...">{{ old('message') }}</textarea>
+                        </div>
+                        <button type="submit" class="btn btn--primary btn--full">Gửi yêu cầu tư vấn</button>
+                    </form>
+                </section>
+
+                <section class="post-guarantee">
+                    <h2><i class="fas fa-award"></i> Cam kết từ xưởng B HOME</h2>
+                    <ul>
+                        <li><i class="fas fa-check"></i><span>Khảo sát và tư vấn tận nhà miễn phí.</span></li>
+                        <li><i class="fas fa-check"></i><span>Báo giá minh bạch, không phát sinh chi phí ngoài thỏa thuận.</span></li>
+                        <li><i class="fas fa-check"></i><span>Chính sách bảo hành lên đến 5 năm theo từng sản phẩm.</span></li>
+                    </ul>
+                </section>
             </aside>
-            @endif
         </div>
+
+        @if($recommendedPosts->isNotEmpty())
+        <section class="post-recommendations" aria-labelledby="post-recommendations-title">
+            <div class="post-recommendations__header">
+                <div>
+                    <span class="post-recommendations__eyebrow">{{ $post->category ?? 'B HOME Blog' }}</span>
+                    <h2 id="post-recommendations-title">Bài viết tiếp theo bạn nên đọc</h2>
+                </div>
+                <a href="{{ route('posts.index') }}">Xem tất cả bài viết <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="post-recommendations__grid">
+                @foreach($recommendedPosts as $related)
+                <article class="post-card">
+                    <a href="{{ route('posts.show', $related->slug) }}" class="post-card__image">
+                        <img src="{{ $related->thumbnail_url ?? 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&auto=format&fit=crop' }}" alt="{{ $related->title }}" loading="lazy">
+                        <span>{{ $related->category ?? 'Bài viết' }}</span>
+                    </a>
+                    <div class="post-card__content">
+                        <div class="post-card__meta">
+                            <span><i class="far fa-clock"></i> {{ $related->read_time ?? '5 phút đọc' }}</span>
+                            <time datetime="{{ ($related->published_at ?? $related->created_at)->toIso8601String() }}">{{ ($related->published_at ?? $related->created_at)->format('d/m/Y') }}</time>
+                        </div>
+                        <h3 class="post-card__title">
+                            <a href="{{ route('posts.show', $related->slug) }}">{{ $related->title }}</a>
+                        </h3>
+                        <p class="post-card__excerpt">{{ $related->excerpt ?? Str::limit(strip_tags($related->content ?? ''), 120) }}</p>
+                        <a href="{{ route('posts.show', $related->slug) }}" class="post-card__link">Đọc bài viết <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+                @endforeach
+            </div>
+        </section>
+        @endif
     </div>
 </section>
 @endsection

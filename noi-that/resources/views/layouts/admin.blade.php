@@ -23,6 +23,10 @@
     @stack('styles')
 </head>
 <body class="admin-body">
+    <button class="admin-sidebar-toggle" id="adminSidebarToggle" aria-label="Mở menu quản trị">
+        <i class="fas fa-bars"></i>
+    </button>
+    <div class="admin-sidebar-overlay" id="adminSidebarOverlay"></div>
 
     {{-- 1. Sidebar Navigation Component --}}
     @include('admin.partials.sidebar')
@@ -44,6 +48,50 @@
         {{-- Footer Component --}}
         @include('admin.partials.footer')
     </main>
+
+    <script>
+        (function() {
+            var toggle = document.getElementById('adminSidebarToggle');
+            var sidebar = document.querySelector('.sidebar');
+            var overlay = document.getElementById('adminSidebarOverlay');
+
+            function closeSidebar() {
+                if (sidebar) sidebar.classList.remove('open');
+                if (overlay) overlay.classList.remove('open');
+                document.body.classList.remove('sidebar-open');
+            }
+
+            function openSidebar() {
+                if (sidebar) sidebar.classList.add('open');
+                if (overlay) overlay.classList.add('open');
+                document.body.classList.add('sidebar-open');
+            }
+
+            if (toggle) {
+                toggle.addEventListener('click', function() {
+                    if (sidebar && sidebar.classList.contains('open')) {
+                        closeSidebar();
+                    } else {
+                        openSidebar();
+                    }
+                });
+            }
+
+            if (overlay) {
+                overlay.addEventListener('click', closeSidebar);
+            }
+
+            if (sidebar) {
+                sidebar.querySelectorAll('.nav-link').forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        if (window.innerWidth <= 992) {
+                            closeSidebar();
+                        }
+                    });
+                });
+            }
+        })();
+    </script>
 
     @stack('scripts')
 </body>

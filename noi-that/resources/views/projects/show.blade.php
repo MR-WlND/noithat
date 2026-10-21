@@ -3,7 +3,7 @@
 @section('content')
 <section class="project-detail" style="padding-top: 100px;">
     <!-- Project Hero -->
-    <div class="project-hero" style="background: url('{{ $project->cover_image }}') center/cover no-repeat; position: relative;">
+    <div class="project-hero" style="background: url('{{ $project->cover_image_url }}') center/cover no-repeat; position: relative;">
         <div class="hero-overlay"></div>
         <div class="container">
             <span class="project-category">{{ $project->category->name }}</span>
@@ -38,8 +38,8 @@
                 <h3>Thư Viện Ảnh Thực Tế</h3>
                 <div class="gallery-grid">
                     @foreach($project->images as $image)
-                    <div class="gallery-item" onclick="openLightbox('{{ $image->image_path }}')">
-                        <img src="{{ $image->image_path }}" alt="Ảnh thi công">
+                    <div class="gallery-item" onclick="openLightbox('{{ $image->image_url }}')">
+                        <img src="{{ $image->image_url }}" alt="Ảnh thi công">
                     </div>
                     @endforeach
                 </div>
@@ -61,7 +61,7 @@
             @foreach($relatedProjects as $related)
             <div class="project-card">
                 <div class="project-img">
-                    <img src="{{ $related->cover_image }}" alt="{{ $related->title }}">
+                    <img src="{{ $related->cover_image_url }}" alt="{{ $related->title }}">
                     <div class="project-overlay">
                         <a href="/du-an/{{ $related->slug }}" class="btn-outline-light">Xem Chi Tiết</a>
                     </div>
@@ -103,4 +103,3 @@
     });
 </script>
 @endsection
-

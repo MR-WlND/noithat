@@ -18,6 +18,8 @@ class ContactController extends Controller
             'phone' => 'required|string|max:20',
             'category' => 'nullable|string|max:100',
             'budget' => 'nullable|string|max:100',
+            'property_type' => 'nullable|string|max:100',
+            'area' => 'nullable|string|max:100',
             'message' => 'nullable|string',
         ]);
 
@@ -27,6 +29,12 @@ class ContactController extends Controller
         }
         if ($request->filled('budget')) {
             $details[] = 'Ngân sách: '.$request->budget;
+        }
+        if ($request->filled('property_type')) {
+            $details[] = 'Loại hình nhà: '.$request->property_type;
+        }
+        if ($request->filled('area')) {
+            $details[] = 'Diện tích / số phòng ngủ: '.$request->area;
         }
         if ($request->filled('message')) {
             $details[] = 'Nhu cầu: '.$request->message;

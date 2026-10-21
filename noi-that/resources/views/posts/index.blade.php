@@ -19,7 +19,7 @@
             @forelse($posts as $post)
             <article class="post-card">
                 <a href="{{ route('posts.show', $post->slug) }}" class="post-card__image">
-                    <img src="{{ $post->thumbnail ? (str_starts_with($post->thumbnail, 'http') ? $post->thumbnail : asset('storage/'.$post->thumbnail)) : 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&auto=format&fit=crop' }}" alt="{{ $post->title }}">
+                    <img src="{{ $post->thumbnail_url ?? 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&auto=format&fit=crop' }}" alt="{{ $post->title }}">
                 </a>
                 <div class="post-card__content">
                     <div class="post-card__meta">

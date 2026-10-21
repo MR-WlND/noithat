@@ -8,6 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class ProjectImage extends Model
 {
     use HasFactory;
-    
+
     protected $fillable = ['project_id', 'image_path'];
+
+    public function getImageUrlAttribute(): string
+    {
+        return str_starts_with($this->image_path, 'http')
+            ? $this->image_path
+            : asset('storage/'.$this->image_path);
+    }
 }

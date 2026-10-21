@@ -40,4 +40,25 @@ class ContactNotificationTest extends TestCase
             return $mail->hasTo(config('mail.from.address'));
         });
     }
+
+    public function test_pricing_lead_saves_property_type_and_area_in_contact_message(): void
+    {
+        Mail::fake();
+
+        $this->post(route('contact.store'), [
+            'name' => 'Trần Thị B',
+            'phone' => '0962282204',
+            'property_type' => 'Chung cư',
+            'area' => '80 m², 2 phòng ngủ',
+        ])
+            ->assertRedirect()
+            ->assertSessionHas('success');
+
+        $contact = Contact::query()->firstOrFail();
+
+        $this->assertStringContainsString('Loại hình nhà: Chung cư', $contact->message);
+        $this->assertStringContainsString('Diện tích / số phòng ngủ: 80 m², 2 phòng ngủ', $contact->message);
+
+        Mail::assertSent(NewContactInquiry::class);
+    }
 }

@@ -1,4 +1,4 @@
-<form action="{{ $post ? route('admin.posts.update', $post) : route('admin.posts.store') }}" method="POST">
+<form action="{{ $post ? route('admin.posts.update', $post) : route('admin.posts.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
     @if($post)
         @method('PUT')
@@ -29,7 +29,26 @@
     </div>
 
     <div class="fg">
-        <label for="thumbnail">Ảnh đại diện (URL hoặc đường dẫn trong storage)</label>
+        <label for="thumbnail_file">Tải file ảnh đại diện</label>
+        @if($post?->thumbnail)
+            @php
+                $thumbnailUrl = $post->thumbnail_url;
+            @endphp
+            <div style="margin-bottom:10px;">
+                <img src="{{ $thumbnailUrl }}" alt="{{ $post->title }}"
+                     style="max-width:180px; max-height:120px; border-radius:8px; object-fit:cover; border:1px solid #e8dfd5;">
+            </div>
+        @endif
+        <input type="file" id="thumbnail_file" name="thumbnail_file" accept="image/jpeg,image/png,image/gif,image/webp"
+               style="padding:11px 14px; border:1px solid #ded6cc; border-radius:6px; font-size:0.9rem; background:#faf8f5;">
+        <small style="display:block; margin-top:6px; color:#777;">Chọn ảnh JPG, PNG, GIF hoặc WebP, tối đa 5 MB. Tải ảnh mới sẽ thay ảnh hiện tại.</small>
+        @error('thumbnail_file')
+            <small style="display:block; margin-top:6px; color:#dc2626;">{{ $message }}</small>
+        @enderror
+    </div>
+
+    <div class="fg">
+        <label for="thumbnail">Hoặc dùng URL / đường dẫn ảnh hiện có</label>
         <input type="text" id="thumbnail" name="thumbnail" value="{{ old('thumbnail', $post?->thumbnail) }}"
                placeholder="https://... hoặc posts/anh-bai-viet.jpg" maxlength="2048">
     </div>

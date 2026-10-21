@@ -24,6 +24,21 @@ class Post extends Model
         'published_at' => 'datetime',
     ];
 
+    public function getThumbnailUrlAttribute(): ?string
+    {
+        if (! $this->thumbnail) {
+            return null;
+        }
+
+        if (str_starts_with($this->thumbnail, 'http://') || str_starts_with($this->thumbnail, 'https://')) {
+            return $this->thumbnail;
+        }
+
+        $path = ltrim($this->thumbnail, '/');
+
+        return asset(str_starts_with($path, 'storage/') ? $path : 'storage/'.$path);
+    }
+
     /**
      * Scope: chỉ lấy bài đã published
      */

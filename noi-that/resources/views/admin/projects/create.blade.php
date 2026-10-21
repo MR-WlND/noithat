@@ -68,6 +68,14 @@
         </div>
 
         <div class="fg">
+            <label for="gallery_images">Ảnh thư viện dự án</label>
+            <input type="file" id="gallery_images" name="gallery_images[]" accept="image/jpeg,image/png,image/gif,image/webp"
+                   style="padding:11px 14px; border:1px solid #ded6cc; border-radius:6px; font-size:0.9rem; background:#faf8f5;"
+                   multiple>
+            <small style="display:block; margin-top:6px; color:#777;">Có thể chọn tối đa 20 ảnh, mỗi ảnh không quá 2 MB.</small>
+        </div>
+
+        <div class="fg">
             <label for="description">Mô tả dự án</label>
             <textarea id="description" name="description" rows="5"
                       placeholder="Mô tả chi tiết về dự án...">{{ old('description') }}</textarea>

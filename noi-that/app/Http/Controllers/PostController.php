@@ -10,6 +10,17 @@ class PostController extends Controller
     public function index(): View
     {
         $posts = Post::published()
+            ->select([
+                'id',
+                'title',
+                'slug',
+                'excerpt',
+                'thumbnail',
+                'category',
+                'published_at',
+                'created_at',
+            ])
+            ->selectRaw('CASE WHEN excerpt IS NULL THEN content ELSE NULL END AS content')
             ->latest('published_at')
             ->paginate(9);
 
@@ -22,13 +33,24 @@ class PostController extends Controller
             ->where('slug', $slug)
             ->firstOrFail();
 
-        $relatedPosts = Post::published()
+        $recommendedPosts = Post::published()
             ->where('category', $post->category)
             ->where('id', '!=', $post->id)
             ->latest('published_at')
             ->limit(3)
             ->get();
 
-        return view('posts.show', compact('post', 'relatedPosts'));
+        if ($recommendedPosts->count() < 3) {
+            $additionalPosts = Post::published()
+                ->where('id', '!=', $post->id)
+                ->whereNotIn('id', $recommendedPosts->modelKeys())
+                ->latest('published_at')
+                ->limit(3 - $recommendedPosts->count())
+                ->get();
+
+            $recommendedPosts = $recommendedPosts->concat($additionalPosts);
+        }
+
+        return view('posts.show', compact('post', 'recommendedPosts'));
     }
 }
