@@ -16,13 +16,13 @@ class ProfileController extends Controller
         $profile = [
             'name' => $user->name ?? 'KTS. Hoàng Minh',
             'title' => $user->title ?? 'Trưởng nhóm Thiết Kế',
-            'email' => $user->email ?? 'long16730z@gmail.com',
-            'phone' => $user->phone ?? '0988.248.868',
+            'email' => $user->email ?? 'noithatbhomehatmon@gmail.com',
+            'phone' => $user->phone ?? '0866939060',
             'bio' => $user->bio ?? 'KTS 8 năm kinh nghiệm chuyên sâu về phong cách mộc Japandi và thiết kế thi công may đo nội thất cao cấp căn hộ & biệt thự.',
-            'two_factor_enabled' => (bool)($user->two_factor_enabled ?? true),
+            'two_factor_enabled' => (bool) ($user->two_factor_enabled ?? true),
             'role' => $user->role ?? 'Quản Trị Viên',
             'last_password_change' => $user->updated_at ? $user->updated_at->diffForHumans() : 'Gần đây',
-            'session_ip' => request()->ip() ?? '127.0.0.1'
+            'session_ip' => request()->ip() ?? '127.0.0.1',
         ];
 
         return view('admin.profile.index', compact('profile', 'user'));
@@ -35,7 +35,7 @@ class ProfileController extends Controller
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'title' => ['nullable', 'string', 'max:255'],
-            'email' => ['required', 'email', 'max:255', 'unique:users,email,' . $user->id],
+            'email' => ['required', 'email', 'max:255', 'unique:users,email,'.$user->id],
             'phone' => ['nullable', 'string', 'max:50'],
             'bio' => ['nullable', 'string', 'max:1000'],
         ], [
@@ -65,7 +65,7 @@ class ProfileController extends Controller
         ]);
 
         // Check if current password is valid
-        if (!Hash::check($request->current_password, $user->password) && !in_array($request->current_password, ['admin', 'admin123'])) {
+        if (! Hash::check($request->current_password, $user->password) && ! in_array($request->current_password, ['admin', 'admin123'])) {
             return redirect()->back()->withErrors([
                 'current_password' => 'Mật khẩu hiện tại không chính xác.',
             ]);
@@ -84,6 +84,7 @@ class ProfileController extends Controller
         $user->save();
 
         $statusText = $user->two_factor_enabled ? 'bật' : 'tắt';
+
         return redirect()->back()->with('success', "Đã {$statusText} tính năng bảo mật 2 lớp (2FA) thành công!");
     }
 }

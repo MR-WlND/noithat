@@ -3,81 +3,122 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Post;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
+use Illuminate\View\View;
 
 class PostController extends Controller
 {
-    public function index()
+    public function index(Request $request): View
     {
-        $posts = [
-            [
-                'id' => 1,
-                'title' => 'Kinh nghiệm chọn ván MDF lõi xanh chống ẩm An Cường chuẩn 100% cho tủ bếp',
-                'category' => 'Cẩm Nang Vật Liệu',
-                'slug' => 'kinh-nghiem-chon-mdf-chong-am-an-cuong-tu-bep',
-                'views' => 1840,
-                'seo_score' => 96,
-                'seo_class' => 'good',
-                'author' => 'KTS. Hoàng Minh',
-                'status' => 'Đã xuất bản',
-                'status_class' => 'success',
-                'published_at' => '12/10/2026',
-                'image' => 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&auto=format&fit=crop'
-            ],
-            [
-                'id' => 2,
-                'title' => 'Tổng hợp 25+ mẫu tủ bếp may đo tối ưu công năng cho nhà phố và căn hộ 2026',
-                'category' => 'Xu Hướng Thiết Kế',
-                'slug' => 'mau-tu-bep-may-do-nha-pho-can-ho-2026',
-                'views' => 2450,
-                'seo_score' => 92,
-                'seo_class' => 'good',
-                'author' => 'KTS. Hoàng Minh',
-                'status' => 'Đã xuất bản',
-                'status_class' => 'success',
-                'published_at' => '08/10/2026',
-                'image' => 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&auto=format&fit=crop'
-            ],
-            [
-                'id' => 3,
-                'title' => 'Tại sao nên đóng nội thất trực tiếp tại xưởng mộc gia đình thay vì mua sẵn?',
-                'category' => 'Kinh Nghiệm Làm Mộc',
-                'slug' => 'tai-sao-nen-dong-noi-that-truc-tiep-tai-xuong',
-                'views' => 980,
-                'seo_score' => 88,
-                'seo_class' => 'good',
-                'author' => 'Admin Hệ Thống',
-                'status' => 'Đã xuất bản',
-                'status_class' => 'success',
-                'published_at' => '02/10/2026',
-                'image' => 'https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?w=400&auto=format&fit=crop'
-            ],
-            [
-                'id' => 4,
-                'title' => 'Bảng báo giá thi công tủ áo cánh kính khung nhôm Anodize mới nhất',
-                'category' => 'Báo Giá & Dự Toán',
-                'slug' => 'bang-bao-gia-tu-ao-canh-kinh-anodize',
-                'views' => 320,
-                'seo_score' => 78,
-                'seo_class' => 'medium',
-                'author' => 'KTS. Hoàng Minh',
-                'status' => 'Bản nháp',
-                'status_class' => 'secondary',
-                'published_at' => 'Đang soạn',
-                'image' => 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&auto=format&fit=crop'
-            ]
-        ];
+        $search = $request->string('search')->trim()->toString();
 
-        return view('admin.posts.index', compact('posts'));
+        $posts = Post::query()
+            ->when($search !== '', function ($query) use ($search): void {
+                $query->where(function ($query) use ($search): void {
+                    $query->where('title', 'like', "%{$search}%")
+                        ->orWhere('slug', 'like', "%{$search}%")
+                        ->orWhere('category', 'like', "%{$search}%");
+                });
+            })
+            ->latest()
+            ->paginate(10)
+            ->withQueryString();
+
+        return view('admin.posts.index', [
+            'posts' => $posts,
+            'search' => $search,
+            'totalPosts' => Post::count(),
+            'publishedPosts' => Post::where('is_published', true)->count(),
+            'draftPosts' => Post::where('is_published', false)->count(),
+        ]);
     }
 
-    public function store(Request $request)
+    public function create(): View
     {
-        return redirect()->back()->with('success', 'Đã tạo bài viết mới và tối ưu SEO thành công!');
+        return view('admin.posts.create');
     }
 
-    public function destroy($id)
+    public function store(Request $request): RedirectResponse
     {
-        return redirect()->back()->with('success', 'Đã xóa bài viết thành công!');
+        $validated = $this->validatePost($request);
+        $validated['slug'] = $this->resolveSlug($validated['slug'] ?? null, $validated['title']);
+        $validated['is_published'] = $request->boolean('is_published');
+
+        if ($validated['is_published']) {
+            $validated['published_at'] = now();
+        }
+
+        Post::create($validated);
+
+        return redirect()->route('admin.posts.index')->with('success', 'Đã tạo bài viết mới thành công.');
+    }
+
+    public function edit(Post $post): View
+    {
+        return view('admin.posts.edit', compact('post'));
+    }
+
+    public function update(Request $request, Post $post): RedirectResponse
+    {
+        $validated = $this->validatePost($request, $post);
+        $validated['slug'] = $this->resolveSlug($validated['slug'] ?? null, $validated['title'], $post);
+        $validated['is_published'] = $request->boolean('is_published');
+
+        if ($validated['is_published'] && ! $post->published_at) {
+            $validated['published_at'] = now();
+        }
+
+        $post->update($validated);
+
+        return redirect()->route('admin.posts.index')->with('success', 'Đã cập nhật bài viết thành công.');
+    }
+
+    public function destroy(Post $post): RedirectResponse
+    {
+        $post->delete();
+
+        return redirect()->route('admin.posts.index')->with('success', 'Đã xóa bài viết thành công.');
+    }
+
+    /**
+     * @return array{title: string, slug: ?string, excerpt: ?string, content: ?string, thumbnail: ?string, category: ?string, read_time: ?string}
+     */
+    private function validatePost(Request $request, ?Post $post = null): array
+    {
+        return $request->validate([
+            'title' => ['required', 'string', 'max:255'],
+            'slug' => [
+                'nullable',
+                'string',
+                'max:255',
+                Rule::unique('posts', 'slug')->ignore($post),
+            ],
+            'excerpt' => ['nullable', 'string', 'max:1000'],
+            'content' => ['nullable', 'string'],
+            'thumbnail' => ['nullable', 'string', 'max:2048'],
+            'category' => ['nullable', 'string', 'max:255'],
+            'read_time' => ['nullable', 'string', 'max:255'],
+        ]);
+    }
+
+    private function resolveSlug(?string $slug, string $title, ?Post $post = null): string
+    {
+        $baseSlug = Str::slug($slug ?: $title);
+        $baseSlug = $baseSlug !== '' ? $baseSlug : Str::random(8);
+        $resolvedSlug = $baseSlug;
+        $suffix = 2;
+
+        while (Post::where('slug', $resolvedSlug)
+            ->when($post, fn ($query) => $query->whereKeyNot($post->getKey()))
+            ->exists()) {
+            $resolvedSlug = "{$baseSlug}-{$suffix}";
+            $suffix++;
+        }
+
+        return $resolvedSlug;
     }
 }

@@ -10,8 +10,6 @@
     </div>
 </div>
 
-@include('admin.partials.alerts')
-
 <div class="table-card">
     <div class="table-header-bar">
         <div class="table-title">

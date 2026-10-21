@@ -85,7 +85,7 @@
                         </div>
                         <div class="input-wrapper">
                             <i class="far fa-user icon-left"></i>
-                            <input type="text" class="form-control" name="email" value="{{ old('email') }}" required autofocus placeholder="long16730z@gmail.com hoặc admin">
+                            <input type="text" class="form-control" name="email" value="{{ old('email') }}" required autofocus placeholder="Tài khoản B HOME">
                         </div>
                     </div>
                     

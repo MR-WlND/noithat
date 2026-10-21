@@ -19,12 +19,18 @@
         <li class="nav-heading">NỘI DUNG WEBSITE</li>
         <li class="nav-item">
             <a href="{{ route('admin.projects.index') }}" class="nav-link {{ request()->routeIs('admin.projects.*') ? 'active' : '' }}">
-                <i class="fas fa-layer-group"></i> Quản lý Dự án <span class="nav-badge nav-badge--primary">18</span>
+                <i class="fas fa-layer-group"></i> Quản lý Dự án
+                @if($projectCount > 0)
+                    <span class="nav-badge nav-badge--primary">{{ $projectCount }}</span>
+                @endif
             </a>
         </li>
         <li class="nav-item">
             <a href="{{ route('admin.posts.index') }}" class="nav-link {{ request()->routeIs('admin.posts.*') ? 'active' : '' }}">
-                <i class="fas fa-feather-alt"></i> Bài viết &amp; SEO <span class="nav-badge nav-badge--success">Mới</span>
+                <i class="fas fa-feather-alt"></i> Bài viết &amp; SEO
+                @if($postCount > 0)
+                    <span class="nav-badge nav-badge--success">{{ $postCount }}</span>
+                @endif
             </a>
         </li>
 
@@ -38,12 +44,6 @@
                 @endif
             </a>
         </li>
-        <li class="nav-item">
-            <a href="{{ route('admin.materials.index') }}" class="nav-link {{ request()->routeIs('admin.materials.*') ? 'active' : '' }}">
-                <i class="fas fa-dolly-flatbed"></i> Vật liệu &amp; Xưởng Mộc
-            </a>
-        </li>
-
         {{-- 3. HỆ THỐNG --}}
         <li class="nav-heading">HỆ THỐNG</li>
         <li class="nav-item">

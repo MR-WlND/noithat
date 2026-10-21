@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\NewContactInquiry;
 use App\Models\Contact;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 
 class ContactController extends Controller
 {
@@ -19,22 +23,32 @@ class ContactController extends Controller
 
         $details = [];
         if ($request->filled('category')) {
-            $details[] = 'Hạng mục: ' . $request->category;
+            $details[] = 'Hạng mục: '.$request->category;
         }
         if ($request->filled('budget')) {
-            $details[] = 'Ngân sách: ' . $request->budget;
+            $details[] = 'Ngân sách: '.$request->budget;
         }
         if ($request->filled('message')) {
-            $details[] = 'Nhu cầu: ' . $request->message;
+            $details[] = 'Nhu cầu: '.$request->message;
         }
 
-        $fullMessage = implode(" | ", $details) ?: ($request->message ?? '');
+        $fullMessage = implode(' | ', $details) ?: ($request->message ?? '');
 
-        Contact::create([
+        $contact = Contact::create([
             'name' => $request->name,
             'phone' => $request->phone,
             'message' => $fullMessage,
         ]);
+
+        try {
+            Mail::to(config('mail.from.address'))->send(new NewContactInquiry($contact));
+        } catch (TransportExceptionInterface $exception) {
+            Log::error('Failed to send contact inquiry notification email.', [
+                'contact_id' => $contact->id,
+                'recipient' => config('mail.from.address'),
+                'exception' => $exception->getMessage(),
+            ]);
+        }
 
         return redirect()->back()->with('success', 'Cảm ơn bạn! Yêu cầu tư vấn của bạn đã được gửi thành công. Chúng tôi sẽ liên hệ lại sớm nhất.');
     }

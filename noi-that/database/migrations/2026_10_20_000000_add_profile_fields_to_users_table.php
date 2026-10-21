@@ -10,7 +10,7 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('title')->nullable()->default('Trưởng nhóm Thiết Kế')->after('name');
-            $table->string('phone')->nullable()->default('0988.248.868')->after('email');
+            $table->string('phone')->nullable()->default('0866939060')->after('email');
             $table->text('bio')->nullable()->after('phone');
             $table->string('role')->nullable()->default('KTS Trưởng nhóm')->after('bio');
             $table->boolean('two_factor_enabled')->default(true)->after('role');

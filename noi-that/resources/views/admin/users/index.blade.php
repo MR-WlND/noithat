@@ -11,12 +11,6 @@
     </button>
 </div>
 
-@if(session('success'))
-<div style="background:#ecfdf5; color:#065f46; border-left:4px solid #10b981; padding:12px 18px; border-radius:6px; margin-bottom:24px; font-size:0.9rem;">
-    <i class="fas fa-check-circle"></i> {{ session('success') }}
-</div>
-@endif
-
 <!-- Role Cards -->
 <div class="role-grid">
     @foreach($roles as $role)

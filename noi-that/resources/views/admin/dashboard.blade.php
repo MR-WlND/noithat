@@ -1,235 +1,119 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="welcome-banner">
-    <div class="welcome-text">
-        <h5>KOMOREBI & WOODCRAFT STUDIO</h5>
-        <h2>Xin chào, KTS. Hoàng Minh!</h2>
-        <p>Hôm nay xưởng mộc đang hoàn thiện 3 đơn hàng bàn giao đợt 1. Có <strong>5 yêu cầu tư vấn mới</strong> cần liên hệ sớm trong sáng nay.</p>
+<div class="page-head dashboard-page-head">
+    <div>
+        <h2>Tổng quan</h2>
+        <p>Theo dõi nhanh hoạt động nội dung và khách hàng của B HOME.</p>
     </div>
-    <div class="status-badge">
-        <div class="status-dot"></div> Xưởng Gỗ Sồi: Hoạt động bình thường
-    </div>
+    <span class="dashboard-date"><i class="far fa-calendar-alt"></i> {{ now()->format('d/m/Y') }}</span>
 </div>
 
-<div class="stats-grid">
-    <div class="stat-card brown">
-        <div class="stat-header">
-            <div class="stat-title">TỔNG SỐ DỰ ÁN</div>
-            <div class="stat-icon"><i class="fas fa-building"></i></div>
-        </div>
-        <div class="stat-body">
-            <div class="stat-value">18 <span>+3 tháng này</span></div>
-            <div class="stat-desc">12 đang thi công &bull; 6 giai đoạn thiết kế</div>
-            <a href="#" class="stat-link">Xem chi tiết danh sách <i class="fas fa-angle-right"></i></a>
-        </div>
-        <i class="fas fa-bars stat-bg-icon"></i>
+<section class="dashboard-welcome" aria-label="Xin chào">
+    <div>
+        <span class="dashboard-eyebrow">B HOME INTERIOR</span>
+        <h3>Xin chào, {{ auth()->user()->name }}</h3>
+        <p>
+            @if($newContactCount > 0)
+                Bạn có <strong>{{ number_format($newContactCount) }} yêu cầu</strong> đang chờ liên hệ.
+            @else
+                Hiện không có yêu cầu tư vấn nào đang chờ xử lý.
+            @endif
+        </p>
     </div>
-    
-    <div class="stat-card green">
-        <div class="stat-header">
-            <div class="stat-title">YÊU CẦU TƯ VẤN MỚI</div>
-            <div class="stat-icon"><i class="fas fa-envelope"></i></div>
-        </div>
-        <div class="stat-body">
-            <div class="stat-value">24 <span>5 cần gọi gấp</span></div>
-            <div class="stat-desc">Từ Website, Fanpage & Showroom</div>
-            <a href="#" class="stat-link">Tiếp nhận & Xử lý <i class="fas fa-angle-right"></i></a>
-        </div>
-        <i class="fas fa-envelope stat-bg-icon"></i>
-    </div>
-    
-    <div class="stat-card white">
-        <div class="stat-header">
-            <div class="stat-title">CÔNG TRÌNH BÀN GIAO</div>
-            <div class="stat-icon"><i class="fas fa-check"></i></div>
-        </div>
-        <div class="stat-body">
-            <div class="stat-value">06 <span>Đúng hẹn 100%</span></div>
-            <div class="stat-desc">Nghiệm thu gỗ & lắp ráp nội thất</div>
-            <div style="display:flex; justify-content:space-between; margin-top:20px; font-size:0.8rem;">
-                <span style="color:#888;">Kỳ hạn: Tháng 10/2024</span>
-                <a href="#" class="stat-link">Lịch xưởng <i class="fas fa-arrow-right"></i></a>
-            </div>
-        </div>
-    </div>
-    
-    <div class="stat-card white">
-        <div class="stat-header">
-            <div class="stat-title">TỐC ĐỘ PHẢN HỒI</div>
-            <div class="stat-icon"><i class="far fa-clock"></i></div>
-        </div>
-        <div class="stat-body">
-            <div class="stat-value">18p <span class="badge-light">Mục tiêu &lt;30p</span></div>
-            <div class="stat-desc">98.5% khách hàng hài lòng</div>
-            <div style="display:flex; justify-content:space-between; margin-top:20px; font-size:0.8rem;">
-                <span style="color:#888;">Chăm sóc khách hàng</span>
-                <a href="#" class="stat-link">Chi tiết <i class="fas fa-arrow-right"></i></a>
-            </div>
-        </div>
-    </div>
-</div>
+    <a href="{{ route('admin.inquiries.index') }}" class="dashboard-primary-action">
+        Xem yêu cầu tư vấn <i class="fas fa-arrow-right"></i>
+    </a>
+</section>
 
-<div class="dashboard-grid">
-    <div class="panel">
-        <div class="panel-header">
-            <div class="panel-title">
-                <h3>Dự Án Đang Triển Khai</h3>
-                <p>Tiến độ thiết kế & thi công xưởng mộc</p>
+<section class="dashboard-stats" aria-label="Số liệu tổng quan">
+    <a href="{{ route('admin.projects.index') }}" class="dashboard-stat">
+        <span class="dashboard-stat-icon dashboard-stat-icon--brown"><i class="fas fa-building"></i></span>
+        <span class="dashboard-stat-label">Dự án</span>
+        <strong>{{ number_format($projectCount) }}</strong>
+        <span class="dashboard-stat-note">Tổng số dự án <i class="fas fa-arrow-up-right-from-square"></i></span>
+    </a>
+    <a href="{{ route('admin.inquiries.index') }}" class="dashboard-stat">
+        <span class="dashboard-stat-icon dashboard-stat-icon--green"><i class="fas fa-inbox"></i></span>
+        <span class="dashboard-stat-label">Yêu cầu tư vấn</span>
+        <strong>{{ number_format($contactCount) }}</strong>
+        <span class="dashboard-stat-note">{{ number_format($newContactCount) }} đang chờ liên hệ</span>
+    </a>
+    <a href="{{ route('admin.posts.index') }}" class="dashboard-stat">
+        <span class="dashboard-stat-icon dashboard-stat-icon--blue"><i class="far fa-newspaper"></i></span>
+        <span class="dashboard-stat-label">Bài viết đã xuất bản</span>
+        <strong>{{ number_format($publishedPostCount) }}</strong>
+        <span class="dashboard-stat-note">Đang hiển thị trên website</span>
+    </a>
+</section>
+
+<div class="dashboard-panels">
+    <section class="dashboard-panel">
+        <header class="dashboard-panel-header">
+            <div>
+                <h3>Dự án mới cập nhật</h3>
+                <p>Những dự án được thêm gần đây</p>
             </div>
-            <a href="#" class="btn-outline">Xem tất cả 18 dự án</a>
-        </div>
-        
-        <table class="data-table">
-            <thead>
-                <tr>
-                    <th>TÊN DỰ ÁN / KHÁCH HÀNG</th>
-                    <th>LOẠI HÌNH</th>
-                    <th>KTS CHỦ TRÌ</th>
-                    <th>TIẾN ĐỘ XƯỞNG</th>
-                    <th>TRẠNG THÁI</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <div class="project-info">
-                            <h4>Vinhomes Smart City - Căn 3PN</h4>
-                            <p>Gia đình anh Tuấn Anh &bull; Gỗ sồi tự nhiên</p>
-                        </div>
-                    </td>
-                    <td><span class="tag">Căn hộ</span></td>
-                    <td><span class="architect-info">KTS. Trần Đăng</span></td>
-                    <td>
-                        <div class="progress-wrapper">
-                            <span class="progress-text">85%</span>
-                            <span class="progress-label">Lắp ráp</span>
-                        </div>
-                        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 85%;"></div></div>
-                    </td>
-                    <td><span class="status-pill orange">Sắp bàn giao</span></td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="project-info">
-                            <h4>Villa Ecopark Marina - Song Lập</h4>
-                            <p>Chị Hoàng Yến &bull; Phong cách Japandi Wabi-Sabi</p>
-                        </div>
-                    </td>
-                    <td><span class="tag">Biệt thự</span></td>
-                    <td><span class="architect-info">KTS. Hoàng Minh</span></td>
-                    <td>
-                        <div class="progress-wrapper">
-                            <span class="progress-text">50%</span>
-                            <span class="progress-label">Gia công</span>
-                        </div>
-                        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 50%;"></div></div>
-                    </td>
-                    <td><span class="status-pill blue">Đang sản xuất</span></td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="project-info">
-                            <h4>Penthouse Masteri Thảo Điền</h4>
-                            <p>Anh Quốc Hưng &bull; Nội thất gỗ Óc Chó phối Mây đan</p>
-                        </div>
-                    </td>
-                    <td><span class="tag">Penthouse</span></td>
-                    <td><span class="architect-info">KTS. Lê Phương</span></td>
-                    <td>
-                        <div class="progress-wrapper">
-                            <span class="progress-text">25%</span>
-                            <span class="progress-label">Duyệt 3D</span>
-                        </div>
-                        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 25%; background: #ddd;"></div></div>
-                    </td>
-                    <td><span class="status-pill gray">Bản vẽ kỹ thuật</span></td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="project-info">
-                            <h4>Nhà phố Phố Cổ - Hoàn Kiếm</h4>
-                            <p>Cô Thanh Nga &bull; Tủ bếp tự nhiên & Tủ kịch trần</p>
-                        </div>
-                    </td>
-                    <td><span class="tag">Nhà phố</span></td>
-                    <td><span class="architect-info">KTS. Hoàng Minh</span></td>
-                    <td>
-                        <div class="progress-wrapper">
-                            <span class="progress-text">100%</span>
-                            <span class="progress-label">Hoàn tất</span>
-                        </div>
-                        <div class="progress-bar-bg"><div class="progress-bar-fill green" style="width: 100%;"></div></div>
-                    </td>
-                    <td><span class="status-pill green">Đã nghiệm thu</span></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    
-    <div class="panel">
-        <div class="panel-header">
-            <div class="panel-title">
-                <h3>Yêu Cầu Mới Nhất</h3>
-                <p>Khách hàng cần phản hồi ngay</p>
+            <a href="{{ route('admin.projects.index') }}" class="dashboard-text-link">Tất cả dự án <i class="fas fa-arrow-right"></i></a>
+        </header>
+        @if($recentProjects->isNotEmpty())
+            <div class="dashboard-project-list">
+                @foreach($recentProjects as $project)
+                    <a href="{{ route('admin.projects.edit', $project) }}" class="dashboard-project">
+                        <span class="dashboard-project-thumb">
+                            @if($project->cover_image)
+                                <img src="{{ $project->cover_image }}" alt="" loading="lazy">
+                            @else
+                                <i class="far fa-image"></i>
+                            @endif
+                        </span>
+                        <span class="dashboard-project-info">
+                            <strong>{{ $project->title }}</strong>
+                            <small>{{ $project->category?->name ?? 'Chưa phân loại' }}@if($project->style) &middot; {{ $project->style }}@endif</small>
+                        </span>
+                        <time datetime="{{ $project->created_at->toIso8601String() }}">{{ $project->created_at->diffForHumans() }}</time>
+                        <i class="fas fa-chevron-right dashboard-chevron"></i>
+                    </a>
+                @endforeach
             </div>
-            <div class="tag" style="background:#e0ead9; color:#4a6741;">24 Yêu Cầu</div>
-        </div>
-        
-        <div class="inquiry-list">
-            <div class="inquiry-item">
-                <div class="inquiry-header">
-                    <div class="client-info">
-                        <h5>Nguyễn Thu Thảo</h5>
-                        <p>0912.848.xxx &bull; <span>Hà Nội</span></p>
-                    </div>
-                    <div class="time-badge">12 phút trước</div>
-                </div>
-                <div class="inquiry-quote">
-                    "Cần thiết kế thi công trọn gói căn 2 ngủ Starlake phong cách Nhật Bả..."
-                </div>
-                <div class="inquiry-actions">
-                    <span class="inquiry-tag">Tư vấn trọn gói</span>
-                    <a href="#" class="btn-text">Gọi tư vấn &rarr;</a>
-                </div>
+        @else
+            <div class="dashboard-empty">
+                <i class="far fa-folder-open"></i>
+                <strong>Chưa có dự án nào</strong>
+                <span>Các dự án mới sẽ được hiển thị tại đây.</span>
             </div>
-            
-            <div class="inquiry-item">
-                <div class="inquiry-header">
-                    <div class="client-info">
-                        <h5>Vũ Đình Quân</h5>
-                        <p>0983.312.xxx &bull; <span>Hải Phòng</span></p>
-                    </div>
-                    <div class="time-badge">45 phút trước</div>
-                </div>
-                <div class="inquiry-quote">
-                    "Muốn đặt làm hệ tủ bếp gỗ tần bì tự nhiên kết hợp phụ kiện Hafele the..."
-                </div>
-                <div class="inquiry-actions">
-                    <span class="inquiry-tag">Gia công tủ bếp</span>
-                    <a href="#" class="btn-text">Xem file đính kèm &rarr;</a>
-                </div>
+        @endif
+    </section>
+
+    <section class="dashboard-panel">
+        <header class="dashboard-panel-header">
+            <div>
+                <h3>Liên hệ gần đây</h3>
+                <p>Thông tin khách hàng gửi từ website</p>
             </div>
-            
-            <div class="inquiry-item">
-                <div class="inquiry-header">
-                    <div class="client-info">
-                        <h5>Trần Bích Ngọc</h5>
-                        <p>0904.119.xxx &bull; <span>TP.HCM</span></p>
-                    </div>
-                    <div class="time-badge">2 giờ trước</div>
-                </div>
-                <div class="inquiry-quote">
-                    "Tư vấn nội thất phòng trà đạo và phòng ngủ phong cách Wabi-sabi..."
-                </div>
-                <div class="inquiry-actions">
-                    <span class="inquiry-tag">Không gian trà đạo</span>
-                    <a href="#" class="btn-text">Xử lý ngay &rarr;</a>
-                </div>
+            <a href="{{ route('admin.inquiries.index') }}" class="dashboard-text-link">Tất cả yêu cầu <i class="fas fa-arrow-right"></i></a>
+        </header>
+        @if($recentContacts->isNotEmpty())
+            <div class="dashboard-contact-list">
+                @foreach($recentContacts as $contact)
+                    <article class="dashboard-contact">
+                        <span class="dashboard-contact-avatar">{{ mb_strtoupper(mb_substr($contact->name, 0, 1)) }}</span>
+                        <div class="dashboard-contact-info">
+                            <strong>{{ $contact->name }}</strong>
+                            <a href="tel:{{ $contact->phone }}">{{ $contact->phone }}</a>
+                            <p>{{ \Illuminate\Support\Str::limit($contact->message, 96) }}</p>
+                            <time datetime="{{ $contact->created_at->toIso8601String() }}">{{ $contact->created_at->diffForHumans() }}</time>
+                        </div>
+                    </article>
+                @endforeach
             </div>
-        </div>
-        
-        <a href="#" class="btn-full">Chuyển tới Hộp thư Tư vấn & Khách hàng &rarr;</a>
-    </div>
+        @else
+            <div class="dashboard-empty">
+                <i class="far fa-comment-dots"></i>
+                <strong>Chưa có liên hệ mới</strong>
+                <span>Khi khách gửi biểu mẫu, thông tin sẽ xuất hiện tại đây.</span>
+            </div>
+        @endif
+    </section>
 </div>
 @endsection

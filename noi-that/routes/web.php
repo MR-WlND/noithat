@@ -1,24 +1,21 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-
-// Public Website Controllers
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ProjectController;
-use App\Http\Controllers\ContactController;
-use App\Http\Controllers\PageController;
-use App\Http\Controllers\PostController as FrontPostController;
-
-// Admin Panel Controllers
 use App\Http\Controllers\Admin\AuthController;
+// Public Website Controllers
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\ProjectController as AdminProjectController;
-use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\InquiryController;
-use App\Http\Controllers\Admin\MaterialController;
+use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\ProjectController as AdminProjectController;
+// Admin Panel Controllers
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PageController;
+use App\Http\Controllers\PostController as FrontPostController;
+use App\Http\Controllers\ProjectController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,7 +53,11 @@ Route::get('/bai-viet/{slug}', [FrontPostController::class, 'show'])->name('post
 */
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
-    Route::post('/login', [AuthController::class, 'login'])->name('login.submit');
+    Route::post('/login', [AuthController::class, 'login'])->middleware('throttle:5,1')->name('login.submit');
+    Route::get('/verify-2fa', [AuthController::class, 'showTwoFactorForm'])->name('2fa.form');
+    Route::post('/verify-2fa', [AuthController::class, 'verifyTwoFactorCode'])->middleware('throttle:5,1')->name('2fa.verify');
+    Route::post('/verify-2fa/resend', [AuthController::class, 'resendTwoFactorCode'])->middleware('throttle:3,1')->name('2fa.resend');
+    Route::post('/verify-2fa/cancel', [AuthController::class, 'cancelTwoFactor'])->name('2fa.cancel');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
     /*
@@ -72,11 +73,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('projects', AdminProjectController::class)->except(['show']);
 
         // Posts & SEO
-        Route::prefix('posts')->name('posts.')->group(function () {
-            Route::get('/', [PostController::class, 'index'])->name('index');
-            Route::post('/', [PostController::class, 'store'])->name('store');
-            Route::delete('/{id}', [PostController::class, 'destroy'])->name('destroy');
-        });
+        Route::resource('posts', PostController::class)->except(['show']);
 
         // Leads & Inquiries
         Route::prefix('inquiries')->name('inquiries.')->group(function () {
@@ -84,9 +81,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::put('/{id}', [InquiryController::class, 'updateStatus'])->name('update');
             Route::delete('/{id}', [InquiryController::class, 'destroy'])->name('destroy');
         });
-
-        // Workshop & Materials
-        Route::get('/materials', [MaterialController::class, 'index'])->name('materials.index');
 
         // Website Settings
         Route::prefix('settings')->name('settings.')->group(function () {

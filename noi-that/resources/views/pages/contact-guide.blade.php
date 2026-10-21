@@ -18,9 +18,9 @@
 
             <h3>Các kênh liên hệ nhanh</h3>
             <ul>
-                <li><strong>Hotline / Zalo tư vấn:</strong> 0900.244.800 (Tư vấn &amp; nhận yêu cầu 24/7)</li>
-                <li><strong>Địa chỉ xưởng mộc:</strong> [Điền địa chỉ xưởng thực tế của bạn]</li>
-                <li><strong>Email tiếp nhận bản vẽ/dự án:</strong> lienhe@bhome.vn</li>
+                <li><strong>Hotline / Zalo tư vấn:</strong> 0866939060 (Tư vấn &amp; nhận yêu cầu 24/7)</li>
+                <li><strong>Địa chỉ xưởng mộc:</strong> 182 Phố Hát, Hát Môn, Phúc Thọ, Hà Nội</li>
+                <li><strong>Email tiếp nhận bản vẽ/dự án:</strong> noithatbhomehatmon@gmail.com</li>
             </ul>
 
             <h3>Quy trình 4 bước đặt làm đồ gỗ theo yêu cầu</h3>

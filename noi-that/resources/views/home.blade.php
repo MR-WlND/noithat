@@ -264,7 +264,7 @@
                     <i class="fas fa-phone-alt"></i>
                     <div>
                         <span>HOTLINE TƯ VẤN NGAY</span>
-                        <strong>0988.248.868</strong>
+                        <strong>0866939060</strong>
                     </div>
                 </div>
             </div>
@@ -395,7 +395,7 @@
                     <i class="fas fa-phone-alt"></i>
                     <div>
                         <h4>Hotline / Zalo:</h4>
-                        <p><a href="tel:0988248868" style="color:inherit; font-weight:600;">0988.248.868</a> (hoặc 0900.244.800)</p>
+                        <p><a href="tel:0866939060" style="color:inherit; font-weight:600;">0866939060</a></p>
                     </div>
                 </div>
             </div>

@@ -123,12 +123,12 @@
         <!-- Two-Factor Authentication -->
         <div class="card-box">
             <h3 class="form-title"><i class="fas fa-shield-alt" style="color:var(--brown);"></i> Xác Thực 2 Lớp (2FA Security)</h3>
-            <p class="form-desc">Bảo vệ tài khoản quản trị viên khỏi nguy cơ bị lộ mật khẩu bằng mã xác thực gửi về điện thoại / ứng dụng Google Authenticator.</p>
+            <p class="form-desc">Khi bật, hệ thống sẽ yêu cầu mã OTP gửi tới email tài khoản sau khi nhập đúng mật khẩu. Mã có hiệu lực trong 10 phút.</p>
             
             <div class="two-fa-box">
                 <div class="two-fa-info">
                     <h5><i class="fas fa-mobile-alt" style="color:var(--brown);"></i> Trạng Thái Xác Thực 2 Bước</h5>
-                    <p>Hiện đang được bảo vệ qua ứng dụng xác thực OTP.</p>
+                    <p>Mã xác minh được gửi tới email {{ $profile['email'] }} khi đăng nhập.</p>
                 </div>
                 <form action="{{ route('admin.profile.2fa') }}" method="POST" id="form2FA">
                     @csrf

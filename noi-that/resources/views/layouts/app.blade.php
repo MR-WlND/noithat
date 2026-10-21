@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body>
+<body style="overflow-x:hidden;">
     <header class="header">
         <div class="container header-container">
             <a href="{{ route('home') }}" class="logo logo--luxury">
@@ -35,7 +35,7 @@
                 </ul>
             </nav>
             <div class="header-right">
-                <a href="tel:0988248868" class="header-phone"><i class="fas fa-phone-alt"></i> 0988.248.868</a>
+                <a href="tel:0866939060" class="header-phone"><i class="fas fa-phone-alt"></i> 0866939060</a>
                 <a href="{{ route('home') }}#lien-he" class="btn btn--primary">Nhận Báo Giá <i class="fas fa-arrow-right"></i></a>
             </div>
             <!-- Hamburger -->
@@ -56,7 +56,7 @@
         </ul>
         <div class="mobile-nav__cta">
             <a href="{{ route('home') }}#lien-he" class="btn btn--primary btn--full"><i class="fas fa-paper-plane"></i> Nhận Báo Giá Miễn Phí</a>
-            <a href="tel:0988248868" class="btn btn--primary btn--full" style="margin-top:8px; background:transparent; border:1px solid rgba(255,255,255,0.3); color:inherit;"><i class="fas fa-phone-alt"></i> Gọi Ngay: 0988.248.868</a>
+            <a href="tel:0866939060" class="btn btn--primary btn--full" style="margin-top:8px; background:transparent; border:1px solid rgba(255,255,255,0.3); color:inherit;"><i class="fas fa-phone-alt"></i> Gọi Ngay: 0866939060</a>
         </div>
     </nav>
 
@@ -87,8 +87,8 @@
                 <h3 class="footer-title">Thông Tin Liên Hệ</h3>
                 <ul class="footer-contact">
                     <li><i class="fas fa-map-marker-alt"></i> 182 Phố Hát, Hát Môn, Phúc Thọ, Hà Nội</li>
-                    <li><i class="fas fa-phone-alt"></i> Hotline: 0988.248.868</li>
-                    <li><i class="fas fa-envelope"></i> contact@bhome.vn</li>
+                    <li><i class="fas fa-phone-alt"></i> Hotline: 0866939060</li>
+                    <li><i class="fas fa-envelope"></i> noithatbhomehatmon@gmail.com</li>
                 </ul>
             </div>
             <div class="footer-col">
@@ -120,10 +120,10 @@
 
     <!-- Floating Buttons -->
     <div class="floating-buttons">
-        <a href="https://zalo.me/0988248868" target="_blank" class="float-btn zalo-btn" title="Chat Zalo">
+        <a href="https://zalo.me/0866939060" target="_blank" class="float-btn zalo-btn" title="Chat Zalo">
             Zalo
         </a>
-        <a href="tel:0988248868" class="float-btn phone-btn" title="Gọi ngay">
+        <a href="tel:0866939060" class="float-btn phone-btn" title="Gọi ngay">
             <i class="fas fa-phone"></i>
         </a>
     </div>
