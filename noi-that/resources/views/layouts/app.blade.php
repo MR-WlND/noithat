@@ -31,7 +31,7 @@
                     <li><a href="#ve-chung-toi" class="nav-link">Về Chúng Tôi</a></li>
                     <li><a href="#hang-muc" class="nav-link">Hạng Mục Thi Công</a></li>
                     <li><a href="/du-an" class="nav-link">Dự Án</a></li>
-                    <li><a href="#quy-trinh" class="nav-link">Báo Giá</a></li>
+                    <li><a href="#lien-he" class="nav-link">Liên Hệ</a></li>
                 </ul>
             </nav>
             <div class="header-right">
@@ -52,7 +52,7 @@
             <li><a href="#ve-chung-toi">Về Chúng Tôi</a></li>
             <li><a href="#hang-muc">Hạng Mục Thi Công</a></li>
             <li><a href="/du-an">Dự Án</a></li>
-            <li><a href="#quy-trinh">Báo Giá</a></li>
+            <li><a href="#lien-he">Liên Hệ</a></li>
         </ul>
         <div class="mobile-nav__cta">
             <a href="tel:0988248868" class="btn btn--primary btn--full"><i class="fas fa-phone-alt"></i> Gọi Ngay: 0988.248.868</a>

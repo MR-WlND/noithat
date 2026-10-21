@@ -320,6 +320,61 @@
 </section>
 
 {{-- ═══════════════════════════════
+     BLOG / BÀI VIẾT SEO
+════════════════════════════════ --}}
+@if($latestPosts->isNotEmpty())
+<section class="blog-section" style="background:#fdfcf9; padding:80px 0;">
+    <div class="container">
+        <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:48px; flex-wrap:wrap; gap:16px;">
+            <div>
+                <p class="tag">Kiến Thức Nội Thất · B HOME Blog</p>
+                <h2 style="margin-top:10px;">Kinh Nghiệm &amp; Kiến Thức Nội Thất</h2>
+                <p style="color:#888; margin-top:8px; max-width:500px;">Chia sẻ thực tế từ xưởng mộc — giúp bạn đưa ra quyết định thông minh khi làm nội thất.</p>
+            </div>
+            <a href="/bai-viet" class="btn btn--outline" style="flex-shrink:0;">Xem tất cả bài viết <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:28px;">
+            @foreach($latestPosts as $post)
+            <article style="background:#fff; border-radius:12px; overflow:hidden; border:1px solid #f0ebe3; transition:transform 0.25s, box-shadow 0.25s;"
+                     onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 16px 40px rgba(0,0,0,0.07)'"
+                     onmouseout="this.style.transform='';this.style.boxShadow=''">
+                @if($post->thumbnail)
+                <div style="overflow:hidden; height:200px;">
+                    <img src="{{ $post->thumbnail }}" alt="{{ $post->title }}"
+                         style="width:100%; height:100%; object-fit:cover; transition:transform 0.4s;"
+                         onmouseover="this.style.transform='scale(1.05)'"
+                         onmouseout="this.style.transform=''">
+                </div>
+                @endif
+                <div style="padding:24px;">
+                    <div style="display:flex; align-items:center; gap:10px; margin-bottom:12px;">
+                        <span style="background:#f5f0e8; color:#b99268; font-size:0.72rem; font-weight:700; padding:3px 10px; border-radius:20px; text-transform:uppercase; letter-spacing:0.5px;">
+                            {{ $post->category }}
+                        </span>
+                        <span style="font-size:0.75rem; color:#bbb;">
+                            <i class="fas fa-clock" style="margin-right:4px;"></i>{{ $post->read_time }}
+                        </span>
+                    </div>
+                    <h3 style="font-family:'Playfair Display',serif; font-size:1.08rem; color:#2c2724; line-height:1.45; margin-bottom:10px;">
+                        {{ $post->title }}
+                    </h3>
+                    <p style="font-size:0.87rem; color:#888; line-height:1.6; margin-bottom:18px;">
+                        {{ Str::limit($post->excerpt, 110) }}
+                    </p>
+                    <a href="/bai-viet/{{ $post->slug }}"
+                       style="font-size:0.85rem; font-weight:700; color:#8c5e34; text-decoration:none; display:inline-flex; align-items:center; gap:6px;">
+                        Đọc thêm <i class="fas fa-arrow-right" style="font-size:0.75rem;"></i>
+                    </a>
+                </div>
+            </article>
+            @endforeach
+        </div>
+    </div>
+</section>
+@endif
+
+{{-- ═══════════════════════════════
      BẢN ĐỒ / GHÉ THĂM XƯỞNG
 ════════════════════════════════ --}}
 <section class="mapblock">
