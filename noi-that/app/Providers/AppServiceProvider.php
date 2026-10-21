@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\Contact;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -24,5 +26,10 @@ class AppServiceProvider extends ServiceProvider
         if (config('app.env') === 'production') {
             URL::forceScheme('https');
         }
+
+        View::composer('admin.partials.sidebar', function ($view) {
+            $unreadInquiries = Contact::whereIn('status', ['new', 'Chưa gọi', 'ChÆ°a gá»i'])->count();
+            $view->with('unreadInquiries', $unreadInquiries);
+        });
     }
 }

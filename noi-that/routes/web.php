@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\PageController;
+use App\Http\Controllers\PostController as FrontPostController;
 
 // Admin Panel Controllers
 use App\Http\Controllers\Admin\AuthController;
@@ -27,6 +29,25 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/du-an', [ProjectController::class, 'index'])->name('projects.index');
 Route::get('/du-an/{slug}', [ProjectController::class, 'show'])->name('projects.show');
 Route::post('/lien-he', [ContactController::class, 'store'])->name('contact.store');
+
+/*
+|--------------------------------------------------------------------------
+| Static Pages
+|--------------------------------------------------------------------------
+*/
+Route::get('/gioi-thieu', [PageController::class, 'about'])->name('page.about');
+Route::get('/chinh-sach-bao-hanh', [PageController::class, 'warranty'])->name('page.warranty');
+Route::get('/chinh-sach-bao-mat', [PageController::class, 'privacy'])->name('page.privacy');
+Route::get('/dieu-khoan-su-dung', [PageController::class, 'terms'])->name('page.terms');
+Route::get('/huong-dan-lien-he', [PageController::class, 'contactGuide'])->name('page.guide');
+
+/*
+|--------------------------------------------------------------------------
+| Blog / Posts
+|--------------------------------------------------------------------------
+*/
+Route::get('/bai-viet', [FrontPostController::class, 'index'])->name('posts.index');
+Route::get('/bai-viet/{slug}', [FrontPostController::class, 'show'])->name('posts.show');
 
 /*
 |--------------------------------------------------------------------------

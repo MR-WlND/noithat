@@ -18,7 +18,7 @@
             <div class="stat-title">TỔNG SỐ DỰ ÁN</div>
             <div class="stat-icon"><i class="fas fa-building"></i></div>
         </div>
-        <div>
+        <div class="stat-body">
             <div class="stat-value">18 <span>+3 tháng này</span></div>
             <div class="stat-desc">12 đang thi công &bull; 6 giai đoạn thiết kế</div>
             <a href="#" class="stat-link">Xem chi tiết danh sách <i class="fas fa-angle-right"></i></a>
@@ -31,7 +31,7 @@
             <div class="stat-title">YÊU CẦU TƯ VẤN MỚI</div>
             <div class="stat-icon"><i class="fas fa-envelope"></i></div>
         </div>
-        <div>
+        <div class="stat-body">
             <div class="stat-value">24 <span>5 cần gọi gấp</span></div>
             <div class="stat-desc">Từ Website, Fanpage & Showroom</div>
             <a href="#" class="stat-link">Tiếp nhận & Xử lý <i class="fas fa-angle-right"></i></a>
@@ -44,7 +44,7 @@
             <div class="stat-title">CÔNG TRÌNH BÀN GIAO</div>
             <div class="stat-icon"><i class="fas fa-check"></i></div>
         </div>
-        <div>
+        <div class="stat-body">
             <div class="stat-value">06 <span>Đúng hẹn 100%</span></div>
             <div class="stat-desc">Nghiệm thu gỗ & lắp ráp nội thất</div>
             <div style="display:flex; justify-content:space-between; margin-top:20px; font-size:0.8rem;">
@@ -59,7 +59,7 @@
             <div class="stat-title">TỐC ĐỘ PHẢN HỒI</div>
             <div class="stat-icon"><i class="far fa-clock"></i></div>
         </div>
-        <div>
+        <div class="stat-body">
             <div class="stat-value">18p <span class="badge-light">Mục tiêu &lt;30p</span></div>
             <div class="stat-desc">98.5% khách hàng hài lòng</div>
             <div style="display:flex; justify-content:space-between; margin-top:20px; font-size:0.8rem;">

@@ -19,12 +19,12 @@
         <li class="nav-heading">NỘI DUNG WEBSITE</li>
         <li class="nav-item">
             <a href="{{ route('admin.projects.index') }}" class="nav-link {{ request()->routeIs('admin.projects.*') ? 'active' : '' }}">
-                <i class="fas fa-layer-group"></i> Quản lý Dự án <span class="nav-badge">18</span>
+                <i class="fas fa-layer-group"></i> Quản lý Dự án <span class="nav-badge nav-badge--primary">18</span>
             </a>
         </li>
         <li class="nav-item">
             <a href="{{ route('admin.posts.index') }}" class="nav-link {{ request()->routeIs('admin.posts.*') ? 'active' : '' }}">
-                <i class="fas fa-feather-alt"></i> Bài viết &amp; SEO <span class="nav-badge" style="background:rgba(34,197,94,0.2); color:#4ade80;">Mới</span>
+                <i class="fas fa-feather-alt"></i> Bài viết &amp; SEO <span class="nav-badge nav-badge--success">Mới</span>
             </a>
         </li>
 
@@ -32,7 +32,10 @@
         <li class="nav-heading">KINH DOANH &amp; VẬN HÀNH</li>
         <li class="nav-item">
             <a href="{{ route('admin.inquiries.index') }}" class="nav-link {{ request()->routeIs('admin.inquiries.*') ? 'active' : '' }}">
-                <i class="fas fa-envelope-open-text"></i> Quản lý Yêu cầu (Lead) <span class="nav-badge">24</span>
+                <i class="fas fa-envelope-open-text"></i> Quản lý Yêu cầu
+                @if(isset($unreadInquiries) && $unreadInquiries > 0)
+                    <span class="nav-badge nav-badge--primary">{{ $unreadInquiries }}</span>
+                @endif
             </a>
         </li>
         <li class="nav-item">

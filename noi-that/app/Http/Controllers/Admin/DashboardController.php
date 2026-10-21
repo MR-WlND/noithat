@@ -3,16 +3,15 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\Project;
 use App\Models\Contact;
+use App\Models\Project;
 
 class DashboardController extends Controller
 {
     public function index()
     {
         $projectCount = Project::count();
-        $newContactCount = Contact::where('status', 'new')->orWhere('status', 'Chưa gọi')->count(); // Assuming there's a status field, if not, I'll count all or just the ones not processed
+        $newContactCount = Contact::whereIn('status', ['new', 'Chưa gọi'])->count();
 
         return view('admin.dashboard', compact('projectCount', 'newContactCount'));
     }

@@ -10,6 +10,9 @@ class InquiryController extends Controller
 {
     public function index()
     {
+        // Đánh dấu đã đọc khi vào trang danh sách yêu cầu
+        Contact::whereIn('status', ['new', 'Chưa gọi', 'ChÆ°a gá»i'])->update(['status' => 'Chưa gọi']);
+
         $inquiries = Contact::orderBy('created_at', 'desc')->paginate(15);
         return view('admin.inquiries.index', compact('inquiries'));
     }

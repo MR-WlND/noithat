@@ -27,10 +27,11 @@
             </a>
             <nav class="nav">
                 <ul class="nav-list">
-                    <li><a href="{{ route('home') }}" class="nav-link active">Trang Chủ</a></li>
+                    <li><a href="{{ route('home') }}" class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}">Trang Chủ</a></li>
                     <li><a href="{{ route('home') }}#ve-chung-toi" class="nav-link">Về Chúng Tôi</a></li>
                     <li><a href="{{ route('home') }}#hang-muc" class="nav-link">Hạng Mục Thi Công</a></li>
                     <li><a href="/du-an" class="nav-link">Dự Án</a></li>
+                    <li><a href="{{ route('posts.index') }}" class="nav-link {{ request()->routeIs('posts.*') ? 'active' : '' }}">Bài Viết</a></li>
                 </ul>
             </nav>
             <div class="header-right">
@@ -51,6 +52,7 @@
             <li><a href="{{ route('home') }}#ve-chung-toi">Về Chúng Tôi</a></li>
             <li><a href="{{ route('home') }}#hang-muc">Hạng Mục Thi Công</a></li>
             <li><a href="/du-an">Dự Án</a></li>
+            <li><a href="{{ route('posts.index') }}">Bài Viết</a></li>
         </ul>
         <div class="mobile-nav__cta">
             <a href="{{ route('home') }}#lien-he" class="btn btn--primary btn--full"><i class="fas fa-paper-plane"></i> Nhận Báo Giá Miễn Phí</a>
@@ -101,9 +103,11 @@
             <div class="footer-col">
                 <h3 class="footer-title">Chính Sách</h3>
                 <ul class="footer-links">
-                    <li><a href="#">Bảo hành & Bảo trì</a></li>
-                    <li><a href="#">Chính sách đổi trả</a></li>
-                    <li><a href="#">Bảo mật thông tin</a></li>
+                    <li><a href="{{ route('page.about') }}">Giới thiệu</a></li>
+                    <li><a href="{{ route('page.warranty') }}">Chính sách bảo hành</a></li>
+                    <li><a href="{{ route('page.privacy') }}">Chính sách bảo mật</a></li>
+                    <li><a href="{{ route('page.terms') }}">Điều khoản sử dụng</a></li>
+                    <li><a href="{{ route('page.guide') }}">Hướng dẫn liên hệ</a></li>
                 </ul>
             </div>
         </div>
