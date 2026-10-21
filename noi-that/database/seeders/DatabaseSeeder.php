@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'noithatbhomehatmon@gmail.com',
             'password' => Hash::make('12345678'),
             'title' => 'Trưởng nhóm Thiết Kế',
-            'phone' => '0866939060',
+            'phone' => '0962 282 204',
             'role' => 'Quản Trị Viên',
             'two_factor_enabled' => true,
         ])->save();

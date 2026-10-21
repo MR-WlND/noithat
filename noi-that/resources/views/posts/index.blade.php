@@ -1,6 +1,9 @@
 ﻿@extends('layouts.app')
 
 @section('title', 'Bài Viết - B HOME')
+@section('description', 'Cập nhật tin tức, kinh nghiệm và xu hướng thiết kế nội thất gỗ may đo từ xưởng B HOME. Khám phá bí quyết chọn vật liệu, thi công và tối ưu không gian.')
+@section('canonical', route('posts.index'))
+@section('og_image', asset('images/Logo B HOME.png'))
 
 @section('content')
 <section class="page-header">
@@ -35,7 +38,7 @@
             @endforelse
         </div>
         @if($posts->hasPages())
-        <div style="margin-top:40px; display:flex; justify-content:center;">
+        <div class="posts-pagination">
             {{ $posts->links() }}
         </div>
         @endif

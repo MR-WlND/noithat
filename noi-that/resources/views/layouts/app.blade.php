@@ -3,8 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Xưởng Nội Thất Cao Cấp - B HOME</title>
-    <meta name="description" content="Chuyên thiết kế và thi công nội thất cao cấp: Tủ bếp, Tủ áo, Nội thất căn hộ trọn gói. Xưởng sản xuất trực tiếp, không qua trung gian.">
+    <title>@yield('title', 'Xưởng Nội Thất Cao Cấp - B HOME')</title>
+    <meta name="description" content="@yield('description', 'Chuyên thiết kế và thi công nội thất cao cấp: Tủ bếp, Tủ áo, Nội thất căn hộ trọn gói. Xưởng sản xuất trực tiếp, không qua trung gian.')">
+    <link rel="canonical" href="@yield('canonical', url()->current())">
+    <meta property="og:locale" content="vi_VN">
+    <meta property="og:type" content="@yield('og_type', 'website')">
+    <meta property="og:title" content="@yield('title', 'Xưởng Nội Thất Cao Cấp - B HOME')">
+    <meta property="og:description" content="@yield('description', 'Chuyên thiết kế và thi công nội thất cao cấp: Tủ bếp, Tủ áo, Nội thất căn hộ trọn gói. Xưởng sản xuất trực tiếp, không qua trung gian.')">
+    <meta property="og:url" content="@yield('canonical', url()->current())">
+    <meta property="og:site_name" content="B HOME">
+    <meta property="og:image" content="@yield('og_image', asset('images/Logo B HOME.png'))">
+    @hasSection('og_published_time')
+    <meta property="article:published_time" content="@yield('og_published_time')">
+    @endif
+    @hasSection('og_modified_time')
+    <meta property="article:modified_time" content="@yield('og_modified_time')">
+    @endif
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="@yield('title', 'Xưởng Nội Thất Cao Cấp - B HOME')">
+    <meta name="twitter:description" content="@yield('description', 'Chuyên thiết kế và thi công nội thất cao cấp: Tủ bếp, Tủ áo, Nội thất căn hộ trọn gói. Xưởng sản xuất trực tiếp, không qua trung gian.')">
+    <meta name="twitter:image" content="@yield('og_image', asset('images/Logo B HOME.png'))">
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
@@ -35,7 +53,7 @@
                 </ul>
             </nav>
             <div class="header-right">
-                <a href="tel:0866939060" class="header-phone"><i class="fas fa-phone-alt"></i> 0866939060</a>
+                <a href="tel:0962282204" class="header-phone"><i class="fas fa-phone-alt"></i> 0962 282 204</a>
                 <a href="{{ route('home') }}#lien-he" class="btn btn--primary">Nhận Báo Giá <i class="fas fa-arrow-right"></i></a>
             </div>
             <!-- Hamburger -->
@@ -56,7 +74,7 @@
         </ul>
         <div class="mobile-nav__cta">
             <a href="{{ route('home') }}#lien-he" class="btn btn--primary btn--full"><i class="fas fa-paper-plane"></i> Nhận Báo Giá Miễn Phí</a>
-            <a href="tel:0866939060" class="btn btn--primary btn--full" style="margin-top:8px; background:transparent; border:1px solid rgba(255,255,255,0.3); color:inherit;"><i class="fas fa-phone-alt"></i> Gọi Ngay: 0866939060</a>
+            <a href="tel:0962282204" class="btn btn--primary btn--full" style="margin-top:8px; background:transparent; border:1px solid rgba(255,255,255,0.3); color:inherit;"><i class="fas fa-phone-alt"></i> Gọi Ngay: 0962 282 204</a>
         </div>
     </nav>
 
@@ -87,7 +105,7 @@
                 <h3 class="footer-title">Thông Tin Liên Hệ</h3>
                 <ul class="footer-contact">
                     <li><i class="fas fa-map-marker-alt"></i> 182 Phố Hát, Hát Môn, Phúc Thọ, Hà Nội</li>
-                    <li><i class="fas fa-phone-alt"></i> Hotline: 0866939060</li>
+                    <li><i class="fas fa-phone-alt"></i> Hotline: 0962 282 204</li>
                     <li><i class="fas fa-envelope"></i> noithatbhomehatmon@gmail.com</li>
                 </ul>
             </div>
@@ -120,10 +138,10 @@
 
     <!-- Floating Buttons -->
     <div class="floating-buttons">
-        <a href="https://zalo.me/0866939060" target="_blank" class="float-btn zalo-btn" title="Chat Zalo">
+        <a href="https://zalo.me/0962282204" target="_blank" class="float-btn zalo-btn" title="Chat Zalo">
             Zalo
         </a>
-        <a href="tel:0866939060" class="float-btn phone-btn" title="Gọi ngay">
+        <a href="tel:0962282204" class="float-btn phone-btn" title="Gọi ngay">
             <i class="fas fa-phone"></i>
         </a>
     </div>

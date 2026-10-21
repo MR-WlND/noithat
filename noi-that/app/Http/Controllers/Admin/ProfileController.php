@@ -17,7 +17,7 @@ class ProfileController extends Controller
             'name' => $user->name ?? 'KTS. Hoàng Minh',
             'title' => $user->title ?? 'Trưởng nhóm Thiết Kế',
             'email' => $user->email ?? 'noithatbhomehatmon@gmail.com',
-            'phone' => $user->phone ?? '0866939060',
+            'phone' => $user->phone ?? '0962 282 204',
             'bio' => $user->bio ?? 'KTS 8 năm kinh nghiệm chuyên sâu về phong cách mộc Japandi và thiết kế thi công may đo nội thất cao cấp căn hộ & biệt thự.',
             'two_factor_enabled' => (bool) ($user->two_factor_enabled ?? true),
             'role' => $user->role ?? 'Quản Trị Viên',

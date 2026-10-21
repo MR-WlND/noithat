@@ -1,6 +1,59 @@
 @extends('layouts.app')
 
+@php
+    $homeUrl = route('home');
+    $homeImage = 'https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=1200&auto=format&fit=crop&q=80';
+    $homeDescription = 'Xưởng nội thất B HOME tại Phúc Thọ, Hà Nội: thiết kế, sản xuất tủ bếp, tủ áo và nội thất may đo trực tiếp tại xưởng. Tư vấn và khảo sát miễn phí.';
+    $homeStructuredData = [
+        '@context' => 'https://schema.org',
+        '@graph' => [
+            [
+                '@type' => 'WebSite',
+                '@id' => $homeUrl.'#website',
+                'url' => $homeUrl,
+                'name' => 'B HOME',
+                'description' => $homeDescription,
+                'inLanguage' => 'vi-VN',
+                'publisher' => ['@id' => $homeUrl.'#business'],
+            ],
+            [
+                '@type' => 'HomeAndConstructionBusiness',
+                '@id' => $homeUrl.'#business',
+                'name' => 'B HOME',
+                'url' => $homeUrl,
+                'description' => $homeDescription,
+                'telephone' => '+84962282204',
+                'email' => 'noithatbhomehatmon@gmail.com',
+                'image' => $homeImage,
+                'logo' => asset('images/Logo B HOME.png'),
+                'address' => [
+                    '@type' => 'PostalAddress',
+                    'streetAddress' => '182 Phố Hát, Hát Môn, Phúc Thọ',
+                    'addressLocality' => 'Hà Nội',
+                    'addressCountry' => 'VN',
+                ],
+                'areaServed' => [
+                    '@type' => 'City',
+                    'name' => 'Hà Nội',
+                ],
+                'knowsAbout' => [
+                    'Thiết kế nội thất',
+                    'Thi công tủ bếp may đo',
+                    'Sản xuất tủ áo theo yêu cầu',
+                    'Nội thất căn hộ',
+                ],
+            ],
+        ],
+    ];
+@endphp
+
+@section('title', 'Nội Thất May Đo Hà Nội | Xưởng Mộc B HOME')
+@section('description', $homeDescription)
+@section('canonical', $homeUrl)
+@section('og_image', $homeImage)
+
 @section('content')
+<script type="application/ld+json">@json($homeStructuredData)</script>
 
 {{-- ═══════════════════════════════
      HERO  (text left | image right)
@@ -264,7 +317,7 @@
                     <i class="fas fa-phone-alt"></i>
                     <div>
                         <span>HOTLINE TƯ VẤN NGAY</span>
-                        <strong>0866939060</strong>
+                        <strong>0962 282 204</strong>
                     </div>
                 </div>
             </div>
@@ -283,7 +336,7 @@
                         </div>
                         <div class="f-group">
                             <label>Số điện thoại *</label>
-                            <input type="tel" name="phone" required placeholder="0912 345 678">
+                            <input type="tel" name="phone" required placeholder="0962 282 204">
                         </div>
                     </div>
                     <div class="form-row">
@@ -395,7 +448,7 @@
                     <i class="fas fa-phone-alt"></i>
                     <div>
                         <h4>Hotline / Zalo:</h4>
-                        <p><a href="tel:0866939060" style="color:inherit; font-weight:600;">0866939060</a></p>
+                        <p><a href="tel:0962282204" style="color:inherit; font-weight:600;">0962 282 204</a></p>
                     </div>
                 </div>
             </div>
