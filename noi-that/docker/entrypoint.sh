@@ -24,6 +24,12 @@ if [ "$RUN_MIGRATIONS" = "true" ] || [ -n "$DB_HOST" ] || [ -n "$MYSQLHOST" ]; t
     fi
 fi
 
+# Clear old cache first, then re-cache with current env values
+php artisan cache:clear || true
+php artisan config:clear || true
+php artisan view:clear || true
+php artisan route:clear || true
+
 # Cache configuration, routes and views in production
 if [ "$APP_ENV" = "production" ]; then
     php artisan config:cache || true
